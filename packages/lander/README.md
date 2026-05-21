@@ -39,4 +39,4 @@ Start with the content contract and core compiler, then add SEO, theming, markdo
 
 ## Related
 - [Content family](../content/README.md) - MdWrk content pack
-- [mdwrk.com app](../../apps/mdwrkcom/README.md) - first-party consumer
+- [Content family](../content/README.md) - mdwrk.com content-pack relocation note

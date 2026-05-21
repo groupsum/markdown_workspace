@@ -13,7 +13,7 @@ The content family packages source markdown, public assets, sitemap definitions,
 A content pack is not the same thing as the lander runtime. This README makes the distinction clear and points to the package that ships content itself.
 
 ## What
-- `@mdwrk/mdwrkcom-content-pack` as the first-party content distribution consumed by the mdwrk.com app and related tooling.
+- a relocation note for `@mdwrk/mdwrkcom-content-pack`, whose new source-of-truth home is `mdwrkcom`.
 
 ## Installation
 Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
@@ -23,10 +23,10 @@ npm install @mdwrk/mdwrkcom-content-pack
 ```
 
 ## Usage
-Use the content pack when you need the source content tree and generated discovery assets as a package boundary, not just live files in the repo.
+Use the content pack from its new `mdwrkcom` repo when you need the source content tree and generated discovery assets as a package boundary, not just live files in the old monorepo.
 
 - [mdwrkcom-content-pack](./mdwrkcom-content-pack/README.md)
 
 ## Related
 - [Lander family](../lander/README.md) - runtime and compile surfaces
-- [mdwrk.com app](../../apps/mdwrkcom/README.md) - site consumer
+- `mdwrkcom` - new content-pack source-of-truth repo

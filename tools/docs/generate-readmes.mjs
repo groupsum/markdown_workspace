@@ -178,7 +178,7 @@ readmes.set("README.md", workspaceSurfaceReadme({
   why:
     "The repo is organized like the strongest public package READMEs: start with the product promise, show how to install and run it quickly, then make the package graph and docs easy to navigate. This README is the front door for the repo, not just a file inventory.",
   what: [
-    "Application surfaces for the MdWrk client, desktop shell, public marketing site, and a legacy bridge release line for extracted `@mdwrk/*` packages now maintained in `groupsum/mdwrk` and `groupsum/mdwrk-pages`.",
+    "Application surfaces for the MdWrk client and desktop shell, plus a legacy bridge release line for extracted `@mdwrk/*` packages now maintained in `groupsum/mdwrk` and `groupsum/mdwrk-pages`.",
     "Governed documentation, SSOT specs, conformance scripts, release tooling, and generated evidence lanes.",
     "Example apps that validate public package consumption outside the first-party apps.",
   ],
@@ -191,7 +191,6 @@ readmes.set("README.md", workspaceSurfaceReadme({
     "",
     code("bash", [
       "npm run dev:client",
-      "npm run dev:mdwrkcom",
       "npm run test",
       "npm run conformance",
     ].join("\n")),
@@ -201,7 +200,6 @@ readmes.set("README.md", workspaceSurfaceReadme({
   related: links([
     { label: "Apps", href: "./apps/client/README.md", note: "client app entrypoint" },
     { label: "Desktop Shell", href: "./apps/desktop/README.md", note: "Electron and Capacitor wrapper" },
-    { label: "Public Site", href: "./apps/mdwrkcom/README.md", note: "mdwrk.com app" },
     { label: "Packages Index", href: "./packages/README.md", note: "all reusable package families" },
     { label: "Docs Index", href: "./docs/README.md", note: "architecture, conformance, and operations" },
     { label: "Examples", href: "./examples/README.md", note: "public package consumption examples" },
@@ -212,12 +210,13 @@ readmes.set("README.md", workspaceSurfaceReadme({
     section("Repo Transition", bullets([
       "Active maintenance for reusable renderer, editor, contract, extension, shared, and lander packages moved into the extracted repos `groupsum/mdwrk` and `groupsum/mdwrk-pages`.",
       "This repository now carries a legacy bridge release line for those packages so npm consumers can continue installing the same `@mdwrk/*` names during the migration window.",
-      "The MdWrk applications and `@mdwrk/mdwrkcom-content-pack` remain maintained here.",
+      "`@mdwrk/mdwrkcom-content-pack` moved to its new source-of-truth home in `mdwrkcom`.",
+      "GitHub workflow automation is being removed here as the repository winds down.",
     ])),
     "",
     section("How", bullets([
-      "`apps/` contains deployable surfaces.",
-      "`packages/` contains the app-local packages plus the legacy bridge packages that redirect maintenance to the extracted repos.",
+      "`apps/` contains retained local application history for the client and desktop surfaces.",
+      "`packages/` contains the remaining local packages plus the legacy bridge packages that redirect maintenance to the extracted repos.",
       "`docs/` contains architecture, conformance, and release guidance.",
       "`tools/` contains the automation that keeps the repo reproducible and certifiable.",
       "`examples/` proves the package API shape from an external-consumer perspective.",
@@ -333,7 +332,7 @@ readmes.set("packages/README.md", indexReadme({
   what: [
     "`contracts/`, `renderer/`, `editor/`, `extensions/`, and most `shared/` packages now bridge to extracted maintenance repos while keeping the same npm package names.",
     "`lander/`, `@mdwrk/structured-data`, and `@mdwrk/page-template-demo-content-pack` bridge to `groupsum/mdwrk-pages`.",
-    "`@mdwrk/mdwrkcom-content-pack` remains maintained here with the mdwrk.com application surface.",
+    "`@mdwrk/mdwrkcom-content-pack` moved to its new source-of-truth home in `mdwrkcom`.",
   ],
   install: [
     "npm install",
@@ -361,7 +360,7 @@ readmes.set("packages/README.md", indexReadme({
     section("Maintenance Status", bullets([
       "Use the package READMEs in this repo as legacy bridge docs for packages that have moved.",
       "The active source repos are `groupsum/mdwrk` for renderer/editor/contracts/extensions/shared packages and `groupsum/mdwrk-pages` for lander, structured-data, and page-template-demo-content-pack packages.",
-      "`@mdwrk/mdwrkcom-content-pack` is the primary package in this repo that remains maintained here.",
+      "`@mdwrk/mdwrkcom-content-pack` no longer lives in this repo; this path now exists only as a relocation note.",
     ])),
   ],
 }));
@@ -560,7 +559,7 @@ readmes.set("packages/lander/README.md", indexReadme({
   ].join("\n"),
   related: links([
     { label: "Content family", href: "../content/README.md", note: "MdWrk content pack" },
-    { label: "mdwrk.com app", href: "../../apps/mdwrkcom/README.md", note: "first-party consumer" },
+    { label: "Content family", href: "../content/README.md", note: "mdwrk.com content-pack relocation note" },
   ]),
 }));
 
@@ -573,13 +572,13 @@ readmes.set("packages/content/README.md", indexReadme({
   why:
     "A content pack is not the same thing as the lander runtime. This README makes the distinction clear and points to the package that ships content itself.",
   what: [
-    "`@mdwrk/mdwrkcom-content-pack` as the first-party content distribution consumed by the mdwrk.com app and related tooling.",
+    "A relocation note for `@mdwrk/mdwrkcom-content-pack`, whose new source-of-truth home is `mdwrkcom`.",
   ],
   install: [
     "npm install @mdwrk/mdwrkcom-content-pack",
   ],
   usage: [
-    "Use the content pack when you need the source content tree and generated discovery assets as a package boundary, not just live files in the repo.",
+    "Use the content pack from its new `mdwrkcom` repo when you need the source content tree and generated discovery assets as a package boundary, not just live files in the old monorepo.",
     "",
     bullets([
       "[mdwrkcom-content-pack](./mdwrkcom-content-pack/README.md)",
@@ -587,7 +586,7 @@ readmes.set("packages/content/README.md", indexReadme({
   ].join("\n"),
   related: links([
     { label: "Lander family", href: "../lander/README.md", note: "runtime and compile surfaces" },
-    { label: "mdwrk.com app", href: "../../apps/mdwrkcom/README.md", note: "site consumer" },
+    { label: "mdwrkcom-content-pack relocation note", href: "./mdwrkcom-content-pack/README.md", note: "new repo noted there" },
   ]),
 }));
 
@@ -772,7 +771,7 @@ readmes.set("apps/mdwrkcom/README.md", workspaceSurfaceReadme({
   ],
   install: [
     "npm install",
-    "npm run dev:mdwrkcom",
+      "npm run build",
   ],
   usage: [
     code("bash", [
@@ -1338,7 +1337,7 @@ const packageConfigs = [
     title: "@mdwrk/mdwrkcom-content-pack",
     subtitle: "MdWrk public-site content distribution",
     summary: "This package distributes the mdwrk.com source content tree, markdown data, public assets, and generated discovery artifacts.",
-    why: "Use it when you need the content itself as a package boundary rather than consuming the mdwrk.com app repository structure directly.",
+    why: "Use it when you need the content itself as a package boundary rather than consuming the mdwrk.com deploy host repository structure directly.",
     what: [
       "Source content and markdown data roots.",
       "Sitemap definition path and generated discovery outputs.",

@@ -13,7 +13,7 @@ MdWrk is a multi-package workspace for markdown authoring, rendering, in-place e
 The repo is organized like the strongest public package READMEs: start with the product promise, show how to install and run it quickly, then make the package graph and docs easy to navigate. This README is the front door for the repo, not just a file inventory.
 
 ## What
-- Application surfaces for the MdWrk client, desktop shell, public marketing site, and a legacy bridge release line for extracted `@mdwrk/*` packages now maintained in `groupsum/mdwrk` and `groupsum/mdwrk-pages`.
+- Application surfaces for the MdWrk client and desktop shell, plus a legacy bridge release line for extracted `@mdwrk/*` packages now maintained in `groupsum/mdwrk` and `groupsum/mdwrk-pages`.
 - Governed documentation, SSOT specs, conformance scripts, release tooling, and generated evidence lanes.
 - Example apps that validate public package consumption outside the first-party apps.
 
@@ -30,7 +30,6 @@ Use the workspace root when you want the full platform:
 
 ```bash
 npm run dev:client
-npm run dev:mdwrkcom
 npm run test
 npm run conformance
 ```
@@ -40,13 +39,14 @@ Start from the package indexes below when you want one surface instead of the wh
 ## Repo Transition
 - Active maintenance for reusable renderer, editor, contract, extension, shared, and lander packages moved into the extracted repos `groupsum/mdwrk` and `groupsum/mdwrk-pages`.
 - This repository now carries a legacy bridge release line for those packages so npm consumers can continue installing the same `@mdwrk/*` names during the migration window.
-- The MdWrk applications and `@mdwrk/mdwrkcom-content-pack` remain maintained here.
+- `@mdwrk/mdwrkcom-content-pack` moved to its new source-of-truth home in `mdwrkcom`.
+- GitHub workflow automation is being removed here as the repository winds down.
 
 
 
 ## How
-- `apps/` contains deployable surfaces.
-- `packages/` contains the app-local packages plus the legacy bridge packages that redirect maintenance to the extracted repos.
+- `apps/` contains retained local application history for the client and desktop surfaces.
+- `packages/` contains the remaining local packages plus the legacy bridge packages that redirect maintenance to the extracted repos.
 - `docs/` contains architecture, conformance, and release guidance.
 - `tools/` contains the automation that keeps the repo reproducible and certifiable.
 - `examples/` proves the package API shape from an external-consumer perspective.
@@ -54,7 +54,6 @@ Start from the package indexes below when you want one surface instead of the wh
 ## Related
 - [Apps](./apps/client/README.md) - client app entrypoint
 - [Desktop Shell](./apps/desktop/README.md) - Electron and Capacitor wrapper
-- [Public Site](./apps/mdwrkcom/README.md) - mdwrk.com app
 - [Packages Index](./packages/README.md) - all reusable package families
 - [Docs Index](./docs/README.md) - architecture, conformance, and operations
 - [Examples](./examples/README.md) - public package consumption examples

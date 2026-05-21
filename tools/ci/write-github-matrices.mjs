@@ -38,15 +38,9 @@ export async function generateMatrices() {
         };
       }
 
-      return {
-        name: workspacePackage.packageJson.name,
-        path: workspacePackage.relativeDir,
-        build: 'build:mdwrkcom',
-        lint: 'lint:mdwrkcom',
-        typecheck: 'typecheck:mdwrkcom',
-        test: '',
-      };
-    });
+      return null;
+    })
+    .filter(Boolean);
 
   const publishablePackages = workspaces
     .filter((workspacePackage) => workspacePackage.publishable)

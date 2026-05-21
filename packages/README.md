@@ -15,7 +15,7 @@ Well-trafficked package repos treat the package map like a product catalog. This
 ## What
 - `contracts/`, `renderer/`, `editor/`, `extensions/`, and most `shared/` packages now bridge to extracted maintenance repos while keeping the same npm package names.
 - `lander/`, `@mdwrk/structured-data`, and `@mdwrk/page-template-demo-content-pack` bridge to `groupsum/mdwrk-pages`.
-- `@mdwrk/mdwrkcom-content-pack` remains maintained here with the mdwrk.com application surface.
+- `@mdwrk/mdwrkcom-content-pack` moved to its new source-of-truth home in `mdwrkcom`.
 
 ## Installation
 Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
@@ -39,7 +39,7 @@ Pick a family first, then move to a concrete package README for install and API 
 ## Maintenance Status
 - Use the package READMEs in this repo as legacy bridge docs for packages that have moved.
 - The active source repos are `groupsum/mdwrk` for renderer/editor/contracts/extensions/shared packages and `groupsum/mdwrk-pages` for lander, structured-data, and page-template-demo-content-pack packages.
-- `@mdwrk/mdwrkcom-content-pack` is the primary package in this repo that remains maintained here.
+- `@mdwrk/mdwrkcom-content-pack` no longer lives in this repo; this path now exists only as a relocation note.
 
 ## Related
 - [Root README](../README.md) - repo overview
