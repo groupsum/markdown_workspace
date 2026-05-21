@@ -21,7 +21,10 @@
     "markdown-workspace",
     "editor",
     "markdown",
-    "react"
+    "react",
+    "deprecated",
+    "legacy-bridge",
+    "extracted-repo"
   ],
   "description": "React bindings, textarea editor surface, command wiring, history integration, and theme bridge for the MdWrk portable markdown editor.",
   "dependencies": {
@@ -49,7 +52,8 @@
     "lint": "npm run typecheck",
     "test": "node ./tests/prepare-workspace-links.mjs && node ./tests/run-smoke.mjs",
     "test:component": "node ./tests/prepare-workspace-links.mjs && vitest run tests/component.test.tsx",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "postinstall": "node ../../../tools/release/warn-deprecated-package.mjs"
   },
   "exports": {
     ".": {
@@ -73,5 +77,13 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "author": "Jacob Stewart <jacob@swarmauri.com>",
-  "homepage": "https://mdwrk.com"
+  "homepage": "https://mdwrk.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groupsum/mdwrk",
+    "directory": "packages/editor/markdown-editor-react"
+  },
+  "bugs": {
+    "url": "https://github.com/groupsum/mdwrk/issues"
+  }
 }

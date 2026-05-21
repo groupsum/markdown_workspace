@@ -1,13 +1,11 @@
+<div align="center">
 # MdWrk
-
 **Markdown workspace platform**
-
-<p align="center">
-  <a href="https://github.com/groupsum/markdown_workspace/blob/master/README.md"><img alt="Hits" src="https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.README&amp;left_text=hits" /></a>
-  <a href="https://github.com/groupsum/markdown_workspace/releases"><img alt="Downloads" src="https://img.shields.io/github/downloads/groupsum/markdown_workspace/total?label=downloads" /></a>
-  <a href="package.json"><img alt="Node" src="https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&amp;logoColor=white" /></a>
-  <a href="LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" /></a>
-</p>
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/README.md)
+[![Downloads](https://img.shields.io/github/downloads/groupsum/markdown_workspace/total?label=downloads)](https://github.com/groupsum/markdown_workspace/releases)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+</div>
 
 MdWrk is a multi-package workspace for markdown authoring, rendering, in-place editing, extension runtime delivery, lander publishing, and repository governance.
 
@@ -15,8 +13,7 @@ MdWrk is a multi-package workspace for markdown authoring, rendering, in-place e
 The repo is organized like the strongest public package READMEs: start with the product promise, show how to install and run it quickly, then make the package graph and docs easy to navigate. This README is the front door for the repo, not just a file inventory.
 
 ## What
-- Application surfaces for the MdWrk client, desktop shell, and public marketing site.
-- Reusable renderer, editor, shared, contract, extension, lander, and content packages under the `@mdwrk` scope.
+- Application surfaces for the MdWrk client, desktop shell, public marketing site, and a legacy bridge release line for extracted `@mdwrk/*` packages now maintained in `groupsum/mdwrk` and `groupsum/mdwrk-pages`.
 - Governed documentation, SSOT specs, conformance scripts, release tooling, and generated evidence lanes.
 - Example apps that validate public package consumption outside the first-party apps.
 
@@ -40,9 +37,16 @@ npm run conformance
 
 Start from the package indexes below when you want one surface instead of the whole repo.
 
+## Repo Transition
+- Active maintenance for reusable renderer, editor, contract, extension, shared, and lander packages moved into the extracted repos `groupsum/mdwrk` and `groupsum/mdwrk-pages`.
+- This repository now carries a legacy bridge release line for those packages so npm consumers can continue installing the same `@mdwrk/*` names during the migration window.
+- The MdWrk applications and `@mdwrk/mdwrkcom-content-pack` remain maintained here.
+
+
+
 ## How
 - `apps/` contains deployable surfaces.
-- `packages/` contains reusable libraries grouped by family.
+- `packages/` contains the app-local packages plus the legacy bridge packages that redirect maintenance to the extracted repos.
 - `docs/` contains architecture, conformance, and release guidance.
 - `tools/` contains the automation that keeps the repo reproducible and certifiable.
 - `examples/` proves the package API shape from an external-consumer perspective.
@@ -56,12 +60,3 @@ Start from the package indexes below when you want one surface instead of the wh
 - [Examples](./examples/README.md) - public package consumption examples
 - [Tooling](./tools/README.md) - CI, release, and governance scripts
 - [npm org](https://www.npmjs.com/org/mdwrk) - published package scope
-
-## Documentation Pointers
-- [Documentation index](docs/README.md)
-- [SPEC index](.ssot/specs/SPEC-2001-specs-index.yaml)
-- [Repository governance SPEC](.ssot/specs/SPEC-2002-repository-governance.yaml)
-- [Contributing guide](CONTRIBUTING.md)
-- [Code of conduct](CODE_OF_CONDUCT.md)
-- [License](LICENSE)
-- [Agent instructions](AGENTS.md)

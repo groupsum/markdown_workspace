@@ -21,7 +21,10 @@
     "markdown-workspace",
     "renderer",
     "markdown",
-    "react"
+    "react",
+    "deprecated",
+    "legacy-bridge",
+    "extracted-repo"
   ],
   "description": "React bindings for the MdWrk self-contained markdown renderer checkpoint.",
   "dependencies": {
@@ -48,7 +51,8 @@
     "lint": "npm run typecheck",
     "test": "node ./tests/prepare-workspace-links.mjs && node ./tests/gfm-surface.mjs && node ./tests/optional-profile-surface.mjs && node ./tests/preview-export-policy.mjs && node ./tests/run-smoke.mjs",
     "prepack": "npm run build",
-    "test:optional-profiles": "node ./tests/optional-profile-surface.mjs"
+    "test:optional-profiles": "node ./tests/optional-profile-surface.mjs",
+    "postinstall": "node ../../../tools/release/warn-deprecated-package.mjs"
   },
   "exports": {
     ".": {
@@ -76,5 +80,13 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "author": "Jacob Stewart <jacob@swarmauri.com>",
-  "homepage": "https://mdwrk.com"
+  "homepage": "https://mdwrk.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groupsum/mdwrk",
+    "directory": "packages/renderer/markdown-renderer-react"
+  },
+  "bugs": {
+    "url": "https://github.com/groupsum/mdwrk/issues"
+  }
 }

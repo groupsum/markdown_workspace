@@ -19,14 +19,18 @@
     "markdown-workspace",
     "shared",
     "i18n",
-    "localization"
+    "localization",
+    "deprecated",
+    "legacy-bridge",
+    "extracted-repo"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
     "test": "npm run build && node ./tests/run-smoke.mjs",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "postinstall": "node ../../../tools/release/warn-deprecated-package.mjs"
   },
   "exports": {
     ".": {
@@ -57,5 +61,13 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "author": "Jacob Stewart <jacob@swarmauri.com>",
-  "homepage": "https://mdwrk.com"
+  "homepage": "https://mdwrk.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groupsum/mdwrk",
+    "directory": "packages/shared/i18n"
+  },
+  "bugs": {
+    "url": "https://github.com/groupsum/mdwrk/issues"
+  }
 }

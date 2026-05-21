@@ -8,6 +8,7 @@ import {
   writeJson,
 } from '../lib/workspace.mjs';
 import { buildPackagePublishGraph } from './build-publish-graph.mjs';
+import { getLegacyPackageMigration } from './legacy-package-migration.mjs';
 
 function envFlag(name, defaultValue = false) {
   const value = process.env[name];
@@ -84,6 +85,7 @@ export async function runPublish() {
       path: workspacePackage.relativeDir,
       category: workspacePackage.category,
       access: workspacePackage.packageJson.publishConfig?.access ?? null,
+      legacyBridge: getLegacyPackageMigration(workspacePackage.packageJson.name),
     }));
 
   const mode = publishMode();

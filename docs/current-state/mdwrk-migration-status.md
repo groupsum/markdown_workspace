@@ -17,9 +17,38 @@ The repository contains:
 
 - a client application and published package at `apps/client` (`@mdwrk/mdwrkspace`)
 - a private landing-site workspace at `apps/mdwrkcom` (`@mdwrk/mdwrkcom`)
-- shared contracts, renderer, editor, extension, and shared utility packages under `packages/*`
+- legacy bridge releases for extracted contracts, renderer, editor, extension, shared, lander, structured-data, and page-template-demo packages under `packages/*`
+- the actively maintained `@mdwrk/mdwrkcom-content-pack` under `packages/content/*`
 - example applications under `examples/*`
 - generated release, conformance, pack, and extension artifacts under `artifacts/*`
+
+## Extracted package maintenance
+
+The reusable package maintenance surface is now split across three repos:
+
+- `groupsum/markdown_workspace`
+  - application surfaces
+  - `@mdwrk/mdwrkcom-content-pack`
+  - legacy bridge releases for extracted package names
+- `groupsum/mdwrk`
+  - contracts
+  - shared primitives except `@mdwrk/structured-data`
+  - renderer
+  - editor
+  - extension packages
+- `groupsum/mdwrk-pages`
+  - lander packages
+  - `@mdwrk/structured-data`
+  - `@mdwrk/page-template-demo-content-pack`
+
+## Bridge release policy
+
+When a package has moved to `mdwrk` or `mdwrk-pages`, `markdown_workspace` keeps a transition release line with these rules:
+
+- the npm package name stays the same
+- package metadata points at the extracted repo and exact package directory
+- install-time `postinstall` output warns that active maintenance moved
+- follow-up feature work lands in the extracted repo, not here
 
 ## Package reference convention
 

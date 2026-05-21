@@ -16,7 +16,10 @@
   "keywords": [
     "markdown-workspace",
     "contracts",
-    "typescript"
+    "typescript",
+    "deprecated",
+    "legacy-bridge",
+    "extracted-repo"
   ],
   "name": "@mdwrk/extension-host",
   "description": "Stable host API, lifecycle, and context contracts for MdWrk extensions.",
@@ -30,7 +33,8 @@
     "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
     "test": "npm run typecheck",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "postinstall": "node ../../../tools/release/warn-deprecated-package.mjs"
   },
   "exports": {
     ".": {
@@ -65,5 +69,13 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "author": "Jacob Stewart <jacob@swarmauri.com>",
-  "homepage": "https://mdwrk.com"
+  "homepage": "https://mdwrk.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groupsum/mdwrk",
+    "directory": "packages/contracts/extension-host"
+  },
+  "bugs": {
+    "url": "https://github.com/groupsum/mdwrk/issues"
+  }
 }

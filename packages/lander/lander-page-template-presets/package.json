@@ -18,7 +18,10 @@
     "lander",
     "page-template-presets",
     "content",
-    "portable"
+    "portable",
+    "deprecated",
+    "legacy-bridge",
+    "extracted-repo"
   ],
   "description": "Ready-made page-template graph presets for MdWrk lander sites.",
   "dependencies": {
@@ -30,7 +33,8 @@
     "typecheck": "npm run build -w @mdwrk/lander-page-templates && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
     "test": "npm run build && node ./tests/run-smoke.mjs",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "postinstall": "node ../../../tools/release/warn-deprecated-package.mjs"
   },
   "exports": {
     ".": {
@@ -53,5 +57,13 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "author": "Jacob Stewart <jacob@swarmauri.com>",
-  "homepage": "https://mdwrk.com"
+  "homepage": "https://mdwrk.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groupsum/mdwrk-pages",
+    "directory": "packages/lander/lander-page-template-presets"
+  },
+  "bugs": {
+    "url": "https://github.com/groupsum/mdwrk-pages/issues"
+  }
 }

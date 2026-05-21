@@ -1,23 +1,29 @@
+<div align="center">
 # @mdwrk/extension-git-ops
+**Git workflow extension**
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_extensions_extension_git_ops_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/extensions/extension-git-ops/README.md)
+[![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fextension-git-ops?label=downloads)](https://www.npmjs.com/package/@mdwrk/extension-git-ops)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
+</div>
 
-First-party Git operations extension for MdWrk hosts that expose repository status, source-control actions, and Git settings through the extension system.
+This package provides the first-party Git operations extension surface for MdWrk hosts.
 
-<p align="center">
-  <a href="https://github.com/groupsum/markdown_workspace/blob/master/packages/extensions/extension-git-ops/README.md"><img alt="Hits" src="https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_extensions_extension_git_ops_README&amp;left_text=hits" /></a>
-  <a href="https://www.npmjs.com/package/@mdwrk/extension-git-ops"><img alt="Downloads" src="https://img.shields.io/npm/dm/%40mdwrk%2Fextension-git-ops?label=downloads" /></a>
-  <a href="../../../package.json"><img alt="Node" src="https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&amp;logoColor=white" /></a>
-  <a href="../../../LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" /></a>
-</p>
+## Maintenance Status
+This is a legacy bridge package in `groupsum/markdown_workspace`.
 
-This package provides the bundled manifest, runtime entrypoint, commands, workspace module, action-rail item, and settings section used by MdWrk's Git-oriented workflow surface.
+- Active maintenance moved to `groupsum/mdwrk`.
+- Install compatibility remains on the same npm package name: `@mdwrk/extension-git-ops`.
+- Repository source of truth: [https://github.com/groupsum/mdwrk/tree/master/packages/extensions/extension-git-ops](https://github.com/groupsum/mdwrk/tree/master/packages/extensions/extension-git-ops)
+- Bridge releases from this repo emit an install-time deprecation warning so downstream users can migrate without an immediate package rename.
 
 ## Why
-Use it when Git workflows should be registered as a host extension instead of being hard-coded into the shell. The package owns the extension boundary; the host still supplies repository state, file operations, command execution, and persistence.
+Use it when you want Git-adjacent workflows exposed through the extension system instead of hard-coding them into the shell.
 
 ## What
-- Bundled extension metadata for the Git operations surface.
-- A `createGitOpsBundledEntry` factory for registering commands, views, action-rail placement, and settings.
-- Typed host-facing options for integrating Git status and source-control panels.
+- Bundled extension metadata and entrypoints for Git operations.
+- A first-party package intended to register Git-oriented views and actions.
+- A reusable extension boundary for hosts that support Git workflows.
 
 ## Installation
 Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
@@ -27,21 +33,7 @@ npm install @mdwrk/extension-git-ops @mdwrk/extension-runtime
 ```
 
 ## Usage
-Load it from a host that already provides the MdWrk extension runtime and workspace services.
-
-```ts
-import { createGitOpsBundledEntry } from "@mdwrk/extension-git-ops";
-
-const gitOpsEntry = createGitOpsBundledEntry({
-  isActive: () => host.gitPanelOpen,
-  renderWorkspace: (props) => host.renderGitWorkspace(props),
-  renderExplorer: (props) => host.renderGitExplorer(props),
-  renderSettings: () => host.renderGitSettings(),
-  toggleGitOps: () => host.toggleGitPanel(),
-});
-```
-
-The package also exposes `./manifest`, `./version`, and `./bundled` subpath exports for hosts that load extension metadata separately from bundled entry registration.
+Consume it as a bundled extension package inside a host that already provides runtime and workspace services.
 
 ## Related
 - [Packages index](../../README.md) - family and package navigation

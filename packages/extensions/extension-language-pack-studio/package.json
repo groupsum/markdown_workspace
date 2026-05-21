@@ -40,7 +40,8 @@
     "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
     "test": "npm run build && vitest run tests/language-pack-studio-view.test.tsx --pool=forks --minWorkers=1 --maxWorkers=1",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "postinstall": "node ../../../tools/release/warn-deprecated-package.mjs"
   },
   "exports": {
     ".": {
@@ -66,5 +67,18 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "homepage": "https://mdwrk.com"
+  "homepage": "https://mdwrk.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groupsum/mdwrk",
+    "directory": "packages/extensions/extension-language-pack-studio"
+  },
+  "bugs": {
+    "url": "https://github.com/groupsum/mdwrk/issues"
+  },
+  "keywords": [
+    "deprecated",
+    "legacy-bridge",
+    "extracted-repo"
+  ]
 }

@@ -16,7 +16,10 @@
   "keywords": [
     "markdown-workspace",
     "contracts",
-    "typescript"
+    "typescript",
+    "deprecated",
+    "legacy-bridge",
+    "extracted-repo"
   ],
   "name": "@mdwrk/theme-contract",
   "description": "Portable token and class-name contract for MdWrk themes, renderers, editors, and extensions.",
@@ -25,7 +28,8 @@
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
     "test": "npm run typecheck",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "postinstall": "node ../../../tools/release/warn-deprecated-package.mjs"
   },
   "exports": {
     ".": {
@@ -60,5 +64,13 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "author": "Jacob Stewart <jacob@swarmauri.com>",
-  "homepage": "https://mdwrk.com"
+  "homepage": "https://mdwrk.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groupsum/mdwrk",
+    "directory": "packages/contracts/theme-contract"
+  },
+  "bugs": {
+    "url": "https://github.com/groupsum/mdwrk/issues"
+  }
 }

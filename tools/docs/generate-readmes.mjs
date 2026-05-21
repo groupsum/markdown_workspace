@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { getLegacyPackageMigration } from "../release/legacy-package-migration.mjs";
 
 const root = process.cwd();
 const rootPkg = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
@@ -81,14 +82,35 @@ function code(lang, value) {
   return `\`\`\`${lang}\n${value.trim()}\n\`\`\``;
 }
 
+function maintenanceStatusSection(pkgName) {
+  const migration = getLegacyPackageMigration(pkgName);
+  if (!migration) {
+    return null;
+  }
+
+  const targetRepoLabel = migration.targetRepo.endsWith("/mdwrk-pages") ? "`groupsum/mdwrk-pages`" : "`groupsum/mdwrk`";
+  return section("Maintenance Status", [
+    "This is a legacy bridge package in `groupsum/markdown_workspace`.",
+    "",
+    bullets([
+      `Active maintenance moved to ${targetRepoLabel}.`,
+      `Install compatibility remains on the same npm package name: \`${pkgName}\`.`,
+      `Repository source of truth: [${migration.targetUrl}](${migration.targetUrl})`,
+      "Bridge releases from this repo emit an install-time deprecation warning so downstream users can migrate without an immediate package rename.",
+    ]),
+  ].join("\n"));
+}
+
 function publicPackageReadme(config) {
   const { relPath, title, subtitle, summary, why, what, install, usage, related, extraSections = [] } = config;
   const pkg = JSON.parse(fs.readFileSync(path.join(root, path.dirname(relPath), "package.json"), "utf8"));
   const badges = npmBadges(pkg.name);
+  const maintenanceSection = maintenanceStatusSection(pkg.name);
   return [
     badgeBlock({ relPath, title, subtitle, ...badges }),
     "",
     summary,
+    ...(maintenanceSection ? ["", maintenanceSection] : []),
     "",
     section("Why", why),
     "",
@@ -125,7 +147,7 @@ function workspaceSurfaceReadme(config) {
 }
 
 function indexReadme(config) {
-  const { relPath, title, subtitle, summary, why, what, install, usage, related, repoScoped = true } = config;
+  const { relPath, title, subtitle, summary, why, what, install, usage, related, repoScoped = true, extraSections = [] } = config;
   const badges = repoScoped ? repoBadges() : npmBadges(config.packageName);
   return [
     badgeBlock({ relPath, title, subtitle, ...badges }),
@@ -139,6 +161,7 @@ function indexReadme(config) {
     section("Installation", [commonNodeSupport, "", code("bash", install.join("\n"))].join("\n")),
     "",
     section("Usage", usage),
+    ...extraSections.flatMap((value) => ["", value]),
     "",
     section("Related", related),
   ].join("\n");
@@ -155,8 +178,7 @@ readmes.set("README.md", workspaceSurfaceReadme({
   why:
     "The repo is organized like the strongest public package READMEs: start with the product promise, show how to install and run it quickly, then make the package graph and docs easy to navigate. This README is the front door for the repo, not just a file inventory.",
   what: [
-    "Application surfaces for the MdWrk client, desktop shell, and public marketing site.",
-    "Reusable renderer, editor, shared, contract, extension, lander, and content packages under the `@mdwrk` scope.",
+    "Application surfaces for the MdWrk client, desktop shell, public marketing site, and a legacy bridge release line for extracted `@mdwrk/*` packages now maintained in `groupsum/mdwrk` and `groupsum/mdwrk-pages`.",
     "Governed documentation, SSOT specs, conformance scripts, release tooling, and generated evidence lanes.",
     "Example apps that validate public package consumption outside the first-party apps.",
   ],
@@ -187,9 +209,15 @@ readmes.set("README.md", workspaceSurfaceReadme({
     { label: "npm org", href: npmOrgUrl, note: "published package scope" },
   ]),
   extraSections: [
+    section("Repo Transition", bullets([
+      "Active maintenance for reusable renderer, editor, contract, extension, shared, and lander packages moved into the extracted repos `groupsum/mdwrk` and `groupsum/mdwrk-pages`.",
+      "This repository now carries a legacy bridge release line for those packages so npm consumers can continue installing the same `@mdwrk/*` names during the migration window.",
+      "The MdWrk applications and `@mdwrk/mdwrkcom-content-pack` remain maintained here.",
+    ])),
+    "",
     section("How", bullets([
       "`apps/` contains deployable surfaces.",
-      "`packages/` contains reusable libraries grouped by family.",
+      "`packages/` contains the app-local packages plus the legacy bridge packages that redirect maintenance to the extracted repos.",
       "`docs/` contains architecture, conformance, and release guidance.",
       "`tools/` contains the automation that keeps the repo reproducible and certifiable.",
       "`examples/` proves the package API shape from an external-consumer perspective.",
@@ -303,12 +331,9 @@ readmes.set("packages/README.md", indexReadme({
   why:
     "Well-trafficked package repos treat the package map like a product catalog. This index helps readers move from the repo overview to the exact family or package they need.",
   what: [
-    "`contracts/` for extension and theme API contracts.",
-    "`renderer/` for markdown parsing and React rendering surfaces.",
-    "`editor/` for source-mode and in-renderer editing surfaces.",
-    "`extensions/` for runtime and first-party bundled extensions.",
-    "`shared/` for tokens, icons, i18n, testing, and structured-data helpers.",
-    "`lander/` and `content/` for public-site composition and content delivery.",
+    "`contracts/`, `renderer/`, `editor/`, `extensions/`, and most `shared/` packages now bridge to extracted maintenance repos while keeping the same npm package names.",
+    "`lander/`, `@mdwrk/structured-data`, and `@mdwrk/page-template-demo-content-pack` bridge to `groupsum/mdwrk-pages`.",
+    "`@mdwrk/mdwrkcom-content-pack` remains maintained here with the mdwrk.com application surface.",
   ],
   install: [
     "npm install",
@@ -332,6 +357,13 @@ readmes.set("packages/README.md", indexReadme({
     { label: "Examples", href: "../examples/README.md", note: "external-consumer validation" },
     { label: "npm org", href: npmOrgUrl, note: "published package scope" },
   ]),
+  extraSections: [
+    section("Maintenance Status", bullets([
+      "Use the package READMEs in this repo as legacy bridge docs for packages that have moved.",
+      "The active source repos are `groupsum/mdwrk` for renderer/editor/contracts/extensions/shared packages and `groupsum/mdwrk-pages` for lander, structured-data, and page-template-demo-content-pack packages.",
+      "`@mdwrk/mdwrkcom-content-pack` is the primary package in this repo that remains maintained here.",
+    ])),
+  ],
 }));
 
 readmes.set("packages/contracts/README.md", indexReadme({

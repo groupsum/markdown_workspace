@@ -20,7 +20,10 @@
     "json-ld",
     "seo",
     "aeo",
-    "aieo"
+    "aieo",
+    "deprecated",
+    "legacy-bridge",
+    "extracted-repo"
   ],
   "description": "Reusable Schema.org and JSON-LD builders for MdWrk apps, packages, public content, and discovery surfaces.",
   "scripts": {
@@ -28,7 +31,8 @@
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
     "test": "npm run build && node tests/run-smoke.mjs",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "postinstall": "node ../../../tools/release/warn-deprecated-package.mjs"
   },
   "exports": {
     ".": {
@@ -43,5 +47,13 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "author": "Jacob Stewart <jacob@swarmauri.com>",
-  "homepage": "https://mdwrk.com"
+  "homepage": "https://mdwrk.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groupsum/mdwrk-pages",
+    "directory": "packages/shared/structured-data"
+  },
+  "bugs": {
+    "url": "https://github.com/groupsum/mdwrk-pages/issues"
+  }
 }

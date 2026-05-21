@@ -19,7 +19,10 @@
     "editor",
     "markdown",
     "portable",
-    "core"
+    "core",
+    "deprecated",
+    "legacy-bridge",
+    "extracted-repo"
   ],
   "description": "Portable source-mode markdown editor state, selection transforms, command model, and undo/redo history for MdWrk.",
   "dependencies": {},
@@ -32,7 +35,8 @@
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
     "test": "node ./tests/prepare-workspace-links.mjs && node ./tests/run-smoke.mjs",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "postinstall": "node ../../../tools/release/warn-deprecated-package.mjs"
   },
   "exports": {
     ".": {
@@ -71,5 +75,13 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "author": "Jacob Stewart <jacob@swarmauri.com>",
-  "homepage": "https://mdwrk.com"
+  "homepage": "https://mdwrk.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groupsum/mdwrk",
+    "directory": "packages/editor/markdown-editor-core"
+  },
+  "bugs": {
+    "url": "https://github.com/groupsum/mdwrk/issues"
+  }
 }

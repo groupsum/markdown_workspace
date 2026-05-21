@@ -133,9 +133,10 @@
     "validate:mdwrk-package-cr-order": "node ./tools/governance/validate-mdwrk-package-cr-order.mjs",
     "validate:mdwrk-extension-contributions": "node ./tools/governance/validate-mdwrk-extension-contributions.mjs",
     "validate:mdwrk-lander-package-suite": "node ./tools/governance/validate-mdwrk-lander-package-suite.mjs",
+    "validate:legacy-package-bridge": "node ./tools/governance/validate-legacy-package-bridge.mjs",
     "validate:mdwrkcom-thin-host": "node ./tools/governance/validate-mdwrkcom-thin-host.mjs",
     "validate:mdwrk-docs-governance": "node ./tools/governance/validate-mdwrk-docs-governance.mjs",
-    "ci:governance": "npm run validate:tree && npm run validate:doc-pointers && npm run validate:doc-feature-pages && npm run validate:root-clutter && npm run validate:generated-artifacts && npm run lint:claim-language && npm run validate:wip-notes && npm run validate:release-notes && npm run validate:spec-coverage && npm run validate:ssot-graph && npm run validate:release-snapshots && npm run validate:governance-suite && npm run validate:mdwrk-package-cr-order && npm run validate:mdwrk-extension-contributions && npm run validate:mdwrk-lander-package-suite && npm run validate:mdwrkcom-thin-host && npm run validate:mdwrk-docs-governance"
+    "ci:governance": "npm run validate:tree && npm run validate:doc-pointers && npm run validate:doc-feature-pages && npm run validate:root-clutter && npm run validate:generated-artifacts && npm run lint:claim-language && npm run validate:wip-notes && npm run validate:release-notes && npm run validate:spec-coverage && npm run validate:ssot-graph && npm run validate:release-snapshots && npm run validate:governance-suite && npm run validate:mdwrk-package-cr-order && npm run validate:mdwrk-extension-contributions && npm run validate:mdwrk-lander-package-suite && npm run validate:legacy-package-bridge && npm run validate:mdwrkcom-thin-host && npm run validate:mdwrk-docs-governance"
   },
   "author": "Jacob Stewart <jacob@swarmauri.com>",
   "homepage": "https://mdwrk.com",

@@ -19,7 +19,10 @@
     "extension",
     "manager",
     "runtime",
-    "react"
+    "react",
+    "deprecated",
+    "legacy-bridge",
+    "extracted-repo"
   ],
   "description": "First-party bundled operator console extension for browsing, enabling, disabling, diagnosing, and configuring MdWrk extensions.",
   "dependencies": {
@@ -47,7 +50,8 @@
     "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
     "test": "vitest run tests/extension-manager.test.tsx --pool=forks --minWorkers=1 --maxWorkers=1",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "postinstall": "node ../../../tools/release/warn-deprecated-package.mjs"
   },
   "exports": {
     ".": {
@@ -70,5 +74,13 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "author": "Jacob Stewart <jacob@swarmauri.com>",
-  "homepage": "https://mdwrk.com"
+  "homepage": "https://mdwrk.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groupsum/mdwrk",
+    "directory": "packages/extensions/extension-manager"
+  },
+  "bugs": {
+    "url": "https://github.com/groupsum/mdwrk/issues"
+  }
 }

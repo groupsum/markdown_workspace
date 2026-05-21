@@ -1,15 +1,21 @@
+<div align="center">
 # @mdwrk/markdown-renderer-react
-
 **React markdown renderer component**
-
-<p align="center">
-  <a href="https://github.com/groupsum/markdown_workspace/blob/master/packages/renderer/markdown-renderer-react/README.md"><img alt="Hits" src="https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_renderer_markdown_renderer_react_README&amp;left_text=hits" /></a>
-  <a href="https://www.npmjs.com/package/@mdwrk/markdown-renderer-react"><img alt="Downloads" src="https://img.shields.io/npm/dm/%40mdwrk%2Fmarkdown-renderer-react?label=downloads" /></a>
-  <a href="../../../package.json"><img alt="Node" src="https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&amp;logoColor=white" /></a>
-  <a href="../../../LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" /></a>
-</p>
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_renderer_markdown_renderer_react_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/renderer/markdown-renderer-react/README.md)
+[![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fmarkdown-renderer-react?label=downloads)](https://www.npmjs.com/package/@mdwrk/markdown-renderer-react)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
+</div>
 
 This package wraps the MdWrk renderer core in a React component with theme styles and link-interaction hooks.
+
+## Maintenance Status
+This is a legacy bridge package in `groupsum/markdown_workspace`.
+
+- Active maintenance moved to `groupsum/mdwrk`.
+- Install compatibility remains on the same npm package name: `@mdwrk/markdown-renderer-react`.
+- Repository source of truth: [https://github.com/groupsum/mdwrk/tree/master/packages/renderer/markdown-renderer-react](https://github.com/groupsum/mdwrk/tree/master/packages/renderer/markdown-renderer-react)
+- Bridge releases from this repo emit an install-time deprecation warning so downstream users can migrate without an immediate package rename.
 
 ## Why
 Use it when you want markdown rendering as a React component instead of a headless HTML string pipeline.

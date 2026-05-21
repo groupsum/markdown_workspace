@@ -27,6 +27,8 @@ A publishable package must provide at minimum:
 - publish configuration
 - supportable Node/toolchain range
 
+When a package is in the legacy bridge line for an extracted repo, its metadata must also point to the new repository location and exact package directory.
+
 ## Rule 3 — packages must compile before publication
 
 A package must build successfully and emit its declared exports before it may be published.
@@ -67,6 +69,16 @@ Publishing a package does not relax dependency-boundary rules. Packages must rem
 For third-party extensions:
 - npm package publication distributes source/build artifacts for developers and CI
 - browser-installable catalog artifacts distribute the runtime-consumable payload for the client
+
+## Rule 10 — extracted package bridges must preserve the package name
+
+When a package has moved from `markdown_workspace` into `groupsum/mdwrk` or `groupsum/mdwrk-pages`:
+
+- the npm package name stays unchanged
+- `markdown_workspace` may publish a transition bridge release under that same package name
+- the bridge release must point `repository.url`, `repository.directory`, and `bugs.url` at the extracted repo
+- the bridge release must emit an install-time deprecation warning that names the extracted repo and target path
+- active feature maintenance must land in the extracted repo, not in the bridge copy
 
 ## Phase 13 operational baseline
 

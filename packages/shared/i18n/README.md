@@ -1,15 +1,21 @@
+<div align="center">
 # @mdwrk/i18n
-
 **Locale registry and message helpers**
-
-<p align="center">
-  <a href="https://github.com/groupsum/markdown_workspace/blob/master/packages/shared/i18n/README.md"><img alt="Hits" src="https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_shared_i18n_README&amp;left_text=hits" /></a>
-  <a href="https://www.npmjs.com/package/@mdwrk/i18n"><img alt="Downloads" src="https://img.shields.io/npm/dm/%40mdwrk%2Fi18n?label=downloads" /></a>
-  <a href="../../../package.json"><img alt="Node" src="https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&amp;logoColor=white" /></a>
-  <a href="../../../LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" /></a>
-</p>
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_shared_i18n_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/shared/i18n/README.md)
+[![Downloads](https://img.shields.io/npm/dm/%40mdwrk%2Fi18n?label=downloads)](https://www.npmjs.com/package/@mdwrk/i18n)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../../../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../../../LICENSE)
+</div>
 
 This package provides shared message descriptors, locale catalogs, loaders, and registry helpers for MdWrk packages and apps.
+
+## Maintenance Status
+This is a legacy bridge package in `groupsum/markdown_workspace`.
+
+- Active maintenance moved to `groupsum/mdwrk`.
+- Install compatibility remains on the same npm package name: `@mdwrk/i18n`.
+- Repository source of truth: [https://github.com/groupsum/mdwrk/tree/master/packages/shared/i18n](https://github.com/groupsum/mdwrk/tree/master/packages/shared/i18n)
+- Bridge releases from this repo emit an install-time deprecation warning so downstream users can migrate without an immediate package rename.
 
 ## Why
 Use it when you need a lightweight i18n layer shared across packages rather than app-specific localization code.

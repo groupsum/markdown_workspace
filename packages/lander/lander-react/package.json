@@ -17,7 +17,10 @@
   "keywords": [
     "lander",
     "react",
-    "components"
+    "components",
+    "deprecated",
+    "legacy-bridge",
+    "extracted-repo"
   ],
   "description": "Reusable React components for portable product landing sites.",
   "dependencies": {
@@ -38,7 +41,8 @@
     "typecheck": "npm run build -w @mdwrk/structured-data && npm run build -w @mdwrk/lander-core && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
     "test": "npm run build && node tests/run-smoke.mjs",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "postinstall": "node ../../../tools/release/warn-deprecated-package.mjs"
   },
   "exports": {
     ".": {
@@ -53,5 +57,13 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "author": "Jacob Stewart <jacob@swarmauri.com>",
-  "homepage": "https://mdwrk.com"
+  "homepage": "https://mdwrk.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groupsum/mdwrk-pages",
+    "directory": "packages/lander/lander-react"
+  },
+  "bugs": {
+    "url": "https://github.com/groupsum/mdwrk-pages/issues"
+  }
 }

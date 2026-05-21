@@ -19,7 +19,10 @@
     "extension",
     "runtime",
     "portable",
-    "platform"
+    "platform",
+    "deprecated",
+    "legacy-bridge",
+    "extracted-repo"
   ],
   "description": "Runtime registry, loader, compatibility checks, activation lifecycle, and persisted state for MdWrk extensions.",
   "dependencies": {
@@ -34,7 +37,8 @@
     "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
     "test": "npm run build && node ./tests/prepare-workspace-links.mjs && node ./tests/run-smoke.mjs",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "postinstall": "node ../../../tools/release/warn-deprecated-package.mjs"
   },
   "exports": {
     ".": {
@@ -85,5 +89,13 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "author": "Jacob Stewart <jacob@swarmauri.com>",
-  "homepage": "https://mdwrk.com"
+  "homepage": "https://mdwrk.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groupsum/mdwrk",
+    "directory": "packages/extensions/extension-runtime"
+  },
+  "bugs": {
+    "url": "https://github.com/groupsum/mdwrk/issues"
+  }
 }

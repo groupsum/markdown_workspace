@@ -1,13 +1,11 @@
+<div align="center">
 # MdWrk Packages
-
 **Reusable package catalog**
-
-<p align="center">
-  <a href="https://github.com/groupsum/markdown_workspace/blob/master/packages/README.md"><img alt="Hits" src="https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_README&amp;left_text=hits" /></a>
-  <a href="https://github.com/groupsum/markdown_workspace/releases"><img alt="Downloads" src="https://img.shields.io/github/downloads/groupsum/markdown_workspace/total?label=downloads" /></a>
-  <a href="../package.json"><img alt="Node" src="https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&amp;logoColor=white" /></a>
-  <a href="../LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" /></a>
-</p>
+[![Hits](https://visitor-badge.laobi.icu/badge?page_id=groupsum.markdown_workspace.packages_README&left_text=hits)](https://github.com/groupsum/markdown_workspace/blob/master/packages/README.md)
+[![Downloads](https://img.shields.io/github/downloads/groupsum/markdown_workspace/total?label=downloads)](https://github.com/groupsum/markdown_workspace/releases)
+[![Node](https://img.shields.io/badge/node-20.x%20%7C%2021.x%20%7C%2022.x-339933?logo=node.js&logoColor=white)](../package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](../LICENSE)
+</div>
 
 The `packages/` tree contains the reusable MdWrk libraries that power authoring, rendering, theming, extensions, lander delivery, and shared primitives.
 
@@ -15,12 +13,9 @@ The `packages/` tree contains the reusable MdWrk libraries that power authoring,
 Well-trafficked package repos treat the package map like a product catalog. This index helps readers move from the repo overview to the exact family or package they need.
 
 ## What
-- `contracts/` for extension and theme API contracts.
-- `renderer/` for markdown parsing and React rendering surfaces.
-- `editor/` for source-mode and in-renderer editing surfaces.
-- `extensions/` for runtime and first-party bundled extensions.
-- `shared/` for tokens, icons, i18n, testing, and structured-data helpers.
-- `lander/` and `content/` for public-site composition and content delivery.
+- `contracts/`, `renderer/`, `editor/`, `extensions/`, and most `shared/` packages now bridge to extracted maintenance repos while keeping the same npm package names.
+- `lander/`, `@mdwrk/structured-data`, and `@mdwrk/page-template-demo-content-pack` bridge to `groupsum/mdwrk-pages`.
+- `@mdwrk/mdwrkcom-content-pack` remains maintained here with the mdwrk.com application surface.
 
 ## Installation
 Node.js 20.x through 22.x, matching the workspace engine contract in the root package manifest.
@@ -40,6 +35,11 @@ Pick a family first, then move to a concrete package README for install and API 
 - [Shared](./shared/README.md)
 - [Lander](./lander/README.md)
 - [Content](./content/README.md)
+
+## Maintenance Status
+- Use the package READMEs in this repo as legacy bridge docs for packages that have moved.
+- The active source repos are `groupsum/mdwrk` for renderer/editor/contracts/extensions/shared packages and `groupsum/mdwrk-pages` for lander, structured-data, and page-template-demo-content-pack packages.
+- `@mdwrk/mdwrkcom-content-pack` is the primary package in this repo that remains maintained here.
 
 ## Related
 - [Root README](../README.md) - repo overview

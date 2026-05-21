@@ -7,6 +7,8 @@ Date: 2026-03-27
 The repository is a root npm workspace with explicit application, package, documentation, artifact, and example boundaries.
 Applications compose packages; packages do not depend on applications.
 
+This document now reflects the transition role of `markdown_workspace`. Many reusable packages remain present here as legacy bridge releases, but active package maintenance has moved to extracted repos.
+
 ## Current repository structure
 
 ```text
@@ -69,6 +71,7 @@ Normative interfaces and schemas.
 - `@mdwrk/theme-contract`
 
 These packages are intended to remain implementation-light and stable.
+Active maintenance for this family now lives in `groupsum/mdwrk`; the copies in `markdown_workspace` are legacy bridge releases.
 
 ### Shared
 Cross-cutting primitives that remain app-agnostic.
@@ -78,17 +81,23 @@ Cross-cutting primitives that remain app-agnostic.
 - `@mdwrk/i18n`
 - `@mdwrk/testing`
 
+`@mdwrk/structured-data` has moved with the lander stack to `groupsum/mdwrk-pages`. The remaining shared packages above are actively maintained in `groupsum/mdwrk`; the copies here are legacy bridge releases.
+
 ### Renderer
 Portable markdown rendering packages.
 
 - `@mdwrk/markdown-renderer-core`
 - `@mdwrk/markdown-renderer-react`
 
+Active maintenance for this family now lives in `groupsum/mdwrk`; the copies here are legacy bridge releases.
+
 ### Editor
 Portable markdown editing packages.
 
 - `@mdwrk/markdown-editor-core`
 - `@mdwrk/markdown-editor-react`
+
+Active maintenance for this family now lives in `groupsum/mdwrk`; the copies here are legacy bridge releases.
 
 ### Extensions
 Publishable extension packages and extension runtime.
@@ -100,6 +109,25 @@ Publishable extension packages and extension runtime.
 - `@mdwrk/extension-gemini-agent`
 - `@mdwrk/extension-theme-studio`
 - `@mdwrk/extension-catalog-hello`
+
+Active maintenance for this family now lives in `groupsum/mdwrk`; the copies here are legacy bridge releases.
+
+### Lander and content
+Reusable lander, structured-data, and demo content packages.
+
+- `@mdwrk/structured-data`
+- `@mdwrk/lander-content-contract`
+- `@mdwrk/lander-core`
+- `@mdwrk/lander-seo`
+- `@mdwrk/lander-theme`
+- `@mdwrk/lander-react`
+- `@mdwrk/lander-markdown-content-adapter`
+- `@mdwrk/lander-page-templates`
+- `@mdwrk/lander-page-template-presets`
+- `@mdwrk/page-template-demo-content-pack`
+- `@mdwrk/mdwrkcom-content-pack`
+
+Active maintenance for the first ten packages in this section now lives in `groupsum/mdwrk-pages`; the copies here are legacy bridge releases. `@mdwrk/mdwrkcom-content-pack` remains maintained in `markdown_workspace`.
 
 ### Examples
 Validation and demo packages.

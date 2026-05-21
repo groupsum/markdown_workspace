@@ -19,7 +19,10 @@
     "extension",
     "external",
     "catalog",
-    "sample"
+    "sample",
+    "deprecated",
+    "legacy-bridge",
+    "extracted-repo"
   ],
   "description": "Sample third-party external extension used to validate catalog discovery, installation, trust, and runtime activation.",
   "dependencies": {
@@ -32,7 +35,8 @@
     "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
     "test": "npm run build && node ./tests/run-smoke.mjs && node ./tests/integration.mjs",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "postinstall": "node ../../../tools/release/warn-deprecated-package.mjs"
   },
   "exports": {
     ".": {
@@ -51,5 +55,13 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "author": "Jacob Stewart <jacob@swarmauri.com>",
-  "homepage": "https://mdwrk.com"
+  "homepage": "https://mdwrk.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groupsum/mdwrk",
+    "directory": "packages/extensions/extension-catalog-hello"
+  },
+  "bugs": {
+    "url": "https://github.com/groupsum/mdwrk/issues"
+  }
 }
