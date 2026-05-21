@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/extension-workspace-files",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -15,9 +15,9 @@
   ],
   "sideEffects": false,
   "dependencies": {
-    "@mdwrk/extension-host": "^1.0.5",
-    "@mdwrk/extension-manifest": "^1.0.3",
-    "@mdwrk/extension-runtime": "^1.2.2",
+    "@mdwrk/extension-host": "^1.0.7",
+    "@mdwrk/extension-manifest": "^1.0.5",
+    "@mdwrk/extension-runtime": "^1.2.4",
     "lucide-react": "^0.475.0"
   },
   "peerDependencies": {

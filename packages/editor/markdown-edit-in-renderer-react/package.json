@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/markdown-edit-in-renderer-react",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -30,18 +30,18 @@
   ],
   "description": "Typora-style React editing surface that edits markdown blocks in place inside the rendered document flow for MdWrk.",
   "dependencies": {
-    "@mdwrk/markdown-editor-core": "^1.1.7",
-    "@mdwrk/markdown-editor-react": "^1.1.7",
-    "@mdwrk/markdown-renderer-core": "^1.1.6",
-    "@mdwrk/markdown-renderer-react": "^1.1.6",
-    "@mdwrk/ui-tokens": "^1.2.4"
+    "@mdwrk/markdown-editor-core": "^1.1.8",
+    "@mdwrk/markdown-editor-react": "^1.1.8",
+    "@mdwrk/markdown-renderer-core": "^1.1.7",
+    "@mdwrk/markdown-renderer-react": "^1.1.7",
+    "@mdwrk/ui-tokens": "^1.2.6"
   },
   "peerDependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@mdwrk/testing": "^1.0.3",
+    "@mdwrk/testing": "^1.0.4",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@types/react": "^19.0.8",

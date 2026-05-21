@@ -1,5 +1,5 @@
 {
-  "version": "1.0.6",
+  "version": "1.0.7",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -24,8 +24,8 @@
   "name": "@mdwrk/extension-host",
   "description": "Stable host API, lifecycle, and context contracts for MdWrk extensions.",
   "dependencies": {
-    "@mdwrk/extension-manifest": "^1.0.4",
-    "@mdwrk/theme-contract": "^1.1.3"
+    "@mdwrk/extension-manifest": "^1.0.5",
+    "@mdwrk/theme-contract": "^1.1.5"
   },
   "scripts": {
     "build:deps": "npm run build -w @mdwrk/extension-manifest && npm run build -w @mdwrk/theme-contract",

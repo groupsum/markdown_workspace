@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/page-template-demo-content-pack",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -27,9 +27,9 @@
   ],
   "description": "Example MdWrk content pack demonstrating page-template presets as authored starter content.",
   "dependencies": {
-    "@mdwrk/lander-content-contract": "^0.1.2",
-    "@mdwrk/lander-page-template-presets": "^0.1.0",
-    "@mdwrk/lander-page-templates": "^0.1.1"
+    "@mdwrk/lander-content-contract": "^0.1.3",
+    "@mdwrk/lander-page-template-presets": "^0.1.1",
+    "@mdwrk/lander-page-templates": "^0.1.2"
   },
   "scripts": {
     "build": "node ./scripts/generate-markdown-pages.mjs && npm run build -w @mdwrk/lander-page-template-presets && tsc -p tsconfig.json",

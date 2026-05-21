@@ -1,6 +1,6 @@
 {
   "name": "@mdwrk/extension-manager",
-  "version": "1.2.2",
+  "version": "1.2.4",
   "type": "module",
   "license": "Apache-2.0",
   "publishConfig": {
@@ -26,9 +26,9 @@
   ],
   "description": "First-party bundled operator console extension for browsing, enabling, disabling, diagnosing, and configuring MdWrk extensions.",
   "dependencies": {
-    "@mdwrk/extension-host": "^1.0.5",
-    "@mdwrk/extension-manifest": "^1.0.3",
-    "@mdwrk/extension-runtime": "^1.2.2",
+    "@mdwrk/extension-host": "^1.0.7",
+    "@mdwrk/extension-manifest": "^1.0.5",
+    "@mdwrk/extension-runtime": "^1.2.4",
     "lucide-react": "^0.475.0"
   },
   "peerDependencies": {
@@ -36,7 +36,7 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@mdwrk/testing": "^1.0.3",
+    "@mdwrk/testing": "^1.0.4",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@types/react": "^19.0.8",
