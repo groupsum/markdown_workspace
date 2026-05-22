@@ -66,5 +66,6 @@
     "deprecated",
     "legacy-bridge",
     "extracted-repo"
-  ]
+  ],
+  "private": true
 }

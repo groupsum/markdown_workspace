@@ -1,9 +1,12 @@
 import { isCliEntry, loadWorkspacePackages } from '../lib/workspace.mjs';
+import { getLegacyPackageMigration } from './legacy-package-migration.mjs';
 
 const INTERNAL_PACKAGE_PREFIX = '@mdwrk/';
 const EXCLUDED_PUBLISH_WORKSPACE_DIRS = new Set([
   'apps/mdwrkcom',
   'packages/content/mdwrkcom-content-pack',
+  'apps/client',
+  'packages/content/page-template-demo-content-pack',
 ]);
 
 export function isPublishGraphTarget(workspacePackage) {
@@ -14,6 +17,9 @@ export function isPublishGraphTarget(workspacePackage) {
     return false;
   }
   if (EXCLUDED_PUBLISH_WORKSPACE_DIRS.has(workspacePackage.relativeDir)) {
+    return false;
+  }
+  if (getLegacyPackageMigration(workspacePackage.packageJson.name)) {
     return false;
   }
   return true;

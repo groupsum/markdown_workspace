@@ -1,9 +1,11 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { ensureDir, isCliEntry, loadWorkspacePackages, repoRoot, writeJson } from '../lib/workspace.mjs';
+import { buildPackagePublishGraph } from '../release/build-publish-graph.mjs';
 
 export async function generateMatrices() {
   const workspaces = await loadWorkspacePackages();
+  const publishGraph = buildPackagePublishGraph(workspaces);
 
   const packageGroups = [
     { name: 'contracts', build: 'build:contracts', lint: 'lint:contracts', typecheck: 'typecheck:contracts', test: 'test:contracts' },
@@ -42,8 +44,7 @@ export async function generateMatrices() {
     })
     .filter(Boolean);
 
-  const publishablePackages = workspaces
-    .filter((workspacePackage) => workspacePackage.publishable)
+  const publishablePackages = publishGraph.orderedPackages
     .map((workspacePackage) => ({
       name: workspacePackage.packageJson.name,
       path: workspacePackage.relativeDir,
