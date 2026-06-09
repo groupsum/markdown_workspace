@@ -38,3 +38,26 @@ dist
 /*.png
 /*.svg
 /*.webp
+/.npm-cache
+/packages/content/page-template-demo-content-pack/.demo-dist
+/packages/content/page-template-demo-content-pack/.demo-presets-dist
+
+# Local generated caches and temporary package artifacts
+.tmp/
+.tmp*/
+tmp/
+.uv-cache*/
+.uv-python*/
+.venv*/
+.venv-gitvs*/
+generation_examples/
+node_modules/
+dist/
+build/
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+target/
