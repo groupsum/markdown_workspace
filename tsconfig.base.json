@@ -145,12 +145,6 @@
       "@mdwrk/lander-react/*": [
         "packages/lander/lander-react/dist/*"
       ],
-      "@mdwrk/mdwrkcom-content-pack": [
-        "packages/content/mdwrkcom-content-pack/dist/index.d.ts"
-      ],
-      "@mdwrk/mdwrkcom-content-pack/*": [
-        "packages/content/mdwrkcom-content-pack/dist/*"
-      ],
       "@mdwrk/page-template-demo-content-pack": [
         "packages/content/page-template-demo-content-pack/dist/index.d.ts"
       ],

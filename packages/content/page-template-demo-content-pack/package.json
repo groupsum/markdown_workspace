@@ -32,8 +32,8 @@
     "@mdwrk/lander-page-templates": "^0.1.2"
   },
   "scripts": {
-    "build": "node ./scripts/generate-markdown-pages.mjs && npm run build -w @mdwrk/lander-page-template-presets && tsc -p tsconfig.json",
-    "typecheck": "node ./scripts/generate-markdown-pages.mjs && npm run build -w @mdwrk/lander-page-template-presets && tsc --noEmit -p tsconfig.json",
+    "build": "npm run build -w @mdwrk/lander-page-template-presets && tsc -p tsconfig.json",
+    "typecheck": "npm run build -w @mdwrk/lander-page-template-presets && tsc --noEmit -p tsconfig.json",
     "lint": "npm run typecheck",
     "test": "npm run build && node ./tests/run-smoke.mjs",
     "prepack": "npm run build",
