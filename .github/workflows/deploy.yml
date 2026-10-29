@@ -17,7 +17,7 @@ jobs:
     runs-on: {group: portwyrm-deployment, labels: [self-hosted, Linux, X64, vm104]}
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
-      - uses: cobycloud/actions/actions/wyrmctl-setup@1a8310ba53da69f419f7c1c98cf566441ad7fdef
+      - uses: cobycloud/actions/actions/wyrmctl-setup@56c4a13434c7ec49453bf109d7d6955158992b5a
       - name: Validate isolated deployment definition
         run: |
           set -euo pipefail
@@ -36,7 +36,7 @@ jobs:
           secret="$(sed -n 's/^PORTWYRM_WYRMCTL_SECRET_B64=//p' "$WYRMCTL_CREDENTIAL" | base64 -d)"
           echo "::add-mask::$secret"; test "$identity" = jacob@swarmauri.com
           echo "base-url=$base_url" >> "$GITHUB_OUTPUT"; echo "identity=$identity" >> "$GITHUB_OUTPUT"; echo "secret=$secret" >> "$GITHUB_OUTPUT"
-      - uses: cobycloud/actions/actions/wyrmctl-plan@1a8310ba53da69f419f7c1c98cf566441ad7fdef
+      - uses: cobycloud/actions/actions/wyrmctl-plan@56c4a13434c7ec49453bf109d7d6955158992b5a
         with:
           desired-state: ${{ env.DESIRED_STATE }}
           owner: ${{ env.OWNER }}
@@ -61,7 +61,7 @@ jobs:
     environment: deployment
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
-      - uses: cobycloud/actions/actions/wyrmctl-setup@1a8310ba53da69f419f7c1c98cf566441ad7fdef
+      - uses: cobycloud/actions/actions/wyrmctl-setup@56c4a13434c7ec49453bf109d7d6955158992b5a
       - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16
         with:
           name: deployment-plan-${{ github.sha }}
@@ -73,11 +73,11 @@ jobs:
           base_url="$(sed -n 's/^PORTWYRM_WYRMCTL_BASE_URL=//p' "$WYRMCTL_CREDENTIAL")"; identity="$(sed -n 's/^PORTWYRM_WYRMCTL_IDENTITY=//p' "$WYRMCTL_CREDENTIAL")"; secret="$(sed -n 's/^PORTWYRM_WYRMCTL_SECRET_B64=//p' "$WYRMCTL_CREDENTIAL" | base64 -d)"
           echo "::add-mask::$secret"; test "$identity" = jacob@swarmauri.com
           echo "base-url=$base_url" >> "$GITHUB_OUTPUT"; echo "identity=$identity" >> "$GITHUB_OUTPUT"; echo "secret=$secret" >> "$GITHUB_OUTPUT"
-      - uses: cobycloud/actions/actions/host-mutation-lock@639d1b66cf5962158aa778473b03c0a649267f05
+      - uses: cobycloud/actions/actions/host-mutation-lock@56c4a13434c7ec49453bf109d7d6955158992b5a
         with: {operation: acquire, lock-name: vm104}
-      - uses: cobycloud/actions/actions/docker-compose-stack@1a8310ba53da69f419f7c1c98cf566441ad7fdef
+      - uses: cobycloud/actions/actions/docker-compose-stack@56c4a13434c7ec49453bf109d7d6955158992b5a
         with: {compose-file: docker-compose.yml, project-name: '${{ env.COMPOSE_PROJECT }}', operation: deploy}
-      - uses: cobycloud/actions/actions/wyrmctl-apply@1a8310ba53da69f419f7c1c98cf566441ad7fdef
+      - uses: cobycloud/actions/actions/wyrmctl-apply@56c4a13434c7ec49453bf109d7d6955158992b5a
         with:
           artifact: deployment-evidence/wyrmctl-plan.json
           repository: ${{ github.repository }}
@@ -98,5 +98,5 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
       - if: always()
-        uses: cobycloud/actions/actions/host-mutation-lock@639d1b66cf5962158aa778473b03c0a649267f05
+        uses: cobycloud/actions/actions/host-mutation-lock@56c4a13434c7ec49453bf109d7d6955158992b5a
         with: {operation: release, lock-name: vm104}
