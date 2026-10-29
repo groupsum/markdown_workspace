@@ -17,7 +17,7 @@ x-common-env: &common-env
 
 services:
   client:
-    container_name: markdown_workspace_client
+    container_name: markdown-workspace-client
     build:
       context: .
       dockerfile: apps/client/Dockerfile
@@ -30,7 +30,7 @@ services:
       - private
       - edge
   lander:
-    container_name: markdown_workspace_lander
+    container_name: markdown-workspace-lander
     build:
       context: .
       dockerfile: apps/mdwrkcom/Dockerfile
@@ -43,7 +43,7 @@ services:
       private:
         aliases:
           - lander
-          - markdown_workspace_lander
+          - markdown-workspace-lander
           - mdwrk-com
 
 networks:

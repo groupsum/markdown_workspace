@@ -4,7 +4,7 @@ schemaVersion: 3
 metadata: {name: markdown-workspace-production, owner: markdown-workspace, environment: production}
 spec:
   proxyHosts:
-    - {domain_names: [app.mdwrk.com], forward_scheme: http, forward_host: markdown_workspace_client, forward_port: 80, certificate_ref: cert.markdown-workspace, ssl_forced: 1, http2_support: 1, hsts_enabled: 1, hsts_subdomains: 0, allow_websocket_upgrade: 1, block_exploits: 1, meta: {managed_by: wyrmctl, owner: markdown-workspace, resource_id: proxy.markdown-workspace}}
+    - {domain_names: [app.mdwrk.com], forward_scheme: http, forward_host: markdown-workspace-client, forward_port: 80, certificate_ref: cert.markdown-workspace, ssl_forced: 1, http2_support: 1, hsts_enabled: 1, hsts_subdomains: 0, allow_websocket_upgrade: 1, block_exploits: 1, meta: {managed_by: wyrmctl, owner: markdown-workspace, resource_id: proxy.markdown-workspace}}
   certificates:
     - {name: app.mdwrk.com, domain_names: [app.mdwrk.com], certificate_type: letsencrypt, api_payload: {provider: letsencrypt, meta: {letsencrypt_email: jacob@swarmauri.com, letsencrypt_agree: true, dns_challenge: false}}, meta: {managed_by: wyrmctl, owner: markdown-workspace, resource_id: cert.markdown-workspace}}
   accessLists: []
