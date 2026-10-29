@@ -27,7 +27,8 @@ services:
     environment:
       <<: *common-env
     networks:
-      - dockerwp
+      - private
+      - edge
   lander:
     container_name: markdown_workspace_lander
     build:
@@ -39,12 +40,16 @@ services:
     environment:
       <<: *common-env
     networks:
-      dockerwp:
+      private:
         aliases:
           - lander
           - markdown_workspace_lander
           - mdwrk-com
 
 networks:
-  dockerwp:
-    name: dockerwp
+  private:
+    name: markdown-workspace-private
+    internal: true
+  edge:
+    external: true
+    name: ${PORTWYRM_NETWORK:-portwyrm-edge}
