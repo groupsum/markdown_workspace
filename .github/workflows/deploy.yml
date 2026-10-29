@@ -3,6 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       confirmation: {description: Type DEPLOY markdown-workspace vm104., required: true, type: string}
+      repair_certificate_ownership: {description: Adopt a compatible unmanaged certificate before planning., required: false, default: false, type: boolean}
 permissions: {actions: read, contents: read}
 concurrency: {group: deploy-markdown-workspace-vm104, cancel-in-progress: false}
 env:
@@ -12,12 +13,36 @@ env:
   WYRMCTL_CREDENTIAL: /etc/groupsum/portwyrm.env
   DESIRED_STATE: .wyrmctl/desired-state/production/desired-state.yaml
 jobs:
+  repair-certificate-ownership:
+    if: ${{ inputs.confirmation == 'DEPLOY markdown-workspace vm104' && inputs.repair_certificate_ownership }}
+    runs-on: {group: portwyrm-deployment, labels: [self-hosted, Linux, X64, vm104]}
+    environment: deployment
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - uses: cobycloud/actions/actions/wyrmctl-setup@4733b1d73417b6ce5f43c8993675225ba395aeee
+      - name: Adopt compatible certificate ownership metadata
+        run: |
+          set -euo pipefail
+          test -r "$WYRMCTL_CREDENTIAL"
+          base_url="$(sed -n 's/^PORTWYRM_WYRMCTL_BASE_URL=//p' "$WYRMCTL_CREDENTIAL")"
+          identity="$(sed -n 's/^PORTWYRM_WYRMCTL_IDENTITY=//p' "$WYRMCTL_CREDENTIAL")"
+          secret="$(sed -n 's/^PORTWYRM_WYRMCTL_SECRET_B64=//p' "$WYRMCTL_CREDENTIAL" | base64 -d)"
+          echo "::add-mask::$secret"; test "$identity" = jacob@swarmauri.com
+          NPM_BASE_URL="$base_url" NPM_IDENTITY="$identity" NPM_SECRET="$secret" \
+            wyrmctl --output json adopt "$DESIRED_STATE" \
+              --owner "$OWNER" \
+              --metadata-only \
+              --only certificates \
+              --certificate-mode reuse \
+              --validate-output
+
   plan:
-    if: ${{ inputs.confirmation == 'DEPLOY markdown-workspace vm104' }}
+    needs: repair-certificate-ownership
+    if: ${{ always() && inputs.confirmation == 'DEPLOY markdown-workspace vm104' && (needs.repair-certificate-ownership.result == 'success' || needs.repair-certificate-ownership.result == 'skipped') }}
     runs-on: {group: portwyrm-deployment, labels: [self-hosted, Linux, X64, vm104]}
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
-      - uses: cobycloud/actions/actions/wyrmctl-setup@56c4a13434c7ec49453bf109d7d6955158992b5a
+      - uses: cobycloud/actions/actions/wyrmctl-setup@4733b1d73417b6ce5f43c8993675225ba395aeee
       - name: Validate isolated deployment definition
         run: |
           set -euo pipefail
@@ -61,7 +86,7 @@ jobs:
     environment: deployment
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
-      - uses: cobycloud/actions/actions/wyrmctl-setup@56c4a13434c7ec49453bf109d7d6955158992b5a
+      - uses: cobycloud/actions/actions/wyrmctl-setup@4733b1d73417b6ce5f43c8993675225ba395aeee
       - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16
         with:
           name: deployment-plan-${{ github.sha }}
