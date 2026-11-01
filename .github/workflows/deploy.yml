@@ -82,6 +82,7 @@ jobs:
           retention-days: 14
   apply:
     needs: plan
+    if: ${{ always() && needs.plan.result == 'success' }}
     runs-on: {group: portwyrm-deployment, labels: [self-hosted, Linux, X64, vm104]}
     environment: deployment
     steps:
