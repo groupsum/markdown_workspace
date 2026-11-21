@@ -4,6 +4,16 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  ajv@8.20.0>fast-uri: 3.1.9
+  minimatch@10.2.5>brace-expansion: 5.0.12
+  minimatch@3.1.5>brace-expansion: 1.1.21
+  minimatch@5.1.9>brace-expansion: 2.1.7
+  minimatch@9.0.9>brace-expansion: 2.1.7
+  plist@3.1.0>@xmldom/xmldom: 0.8.15
+  plist@3.1.1>@xmldom/xmldom: 0.9.12
+  wait-on@8.0.5>axios: 1.20.0
+
 importers:
 
   .:
@@ -58,7 +68,7 @@ importers:
         specifier: ^1.2.4
         version: link:../../packages/shared/i18n
       '@mdwrk/icons':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../packages/shared/icons
       '@mdwrk/markdown-edit-in-renderer-react':
         specifier: ^1.0.11
@@ -76,10 +86,10 @@ importers:
         specifier: ^1.1.6
         version: link:../../packages/renderer/markdown-renderer-react
       '@mdwrk/theme-contract':
-        specifier: ^1.1.3
+        specifier: ^1.1.4
         version: link:../../packages/contracts/theme-contract
       '@mdwrk/ui-tokens':
-        specifier: ^1.2.4
+        specifier: ^1.2.5
         version: link:../../packages/shared/ui-tokens
       jszip:
         specifier: ^3.10.1
@@ -197,6 +207,9 @@ importers:
       '@mdwrk/markdown-renderer-react':
         specifier: ^1.1.1
         version: link:../../packages/renderer/markdown-renderer-react
+      '@mdwrk/mdwrkcom-content-pack':
+        specifier: ^0.1.10
+        version: 0.1.10
       '@mdwrk/structured-data':
         specifier: ^0.1.1
         version: link:../../packages/shared/structured-data
@@ -275,6 +288,40 @@ importers:
         specifier: ^6.4.1
         version: 6.4.2(@types/node@24.12.4)(jiti@1.21.7)
 
+  examples/page-template-demo:
+    dependencies:
+      '@mdwrk/lander-core':
+        specifier: ^0.1.0
+        version: link:../../packages/lander/lander-core
+      '@mdwrk/lander-react':
+        specifier: ^0.1.0
+        version: link:../../packages/lander/lander-react
+      '@mdwrk/page-template-demo-content-pack':
+        specifier: ^0.1.0
+        version: link:../../packages/content/page-template-demo-content-pack
+      react:
+        specifier: ^19.2.4
+        version: 19.2.6
+      react-dom:
+        specifier: ^19.2.4
+        version: 19.2.6(react@19.2.6)
+    devDependencies:
+      '@types/react':
+        specifier: ^19.0.8
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: ^19.0.3
+        version: 19.2.3(@types/react@19.2.14)
+      '@vitejs/plugin-react':
+        specifier: ^5.0.0
+        version: 5.2.0(vite@6.4.2(@types/node@24.12.4)(jiti@1.21.7))
+      typescript:
+        specifier: ~5.8.2
+        version: 5.8.3
+      vite:
+        specifier: ^6.2.0
+        version: 6.4.2(@types/node@24.12.4)(jiti@1.21.7)
+
   examples/renderer-basic:
     dependencies:
       '@mdwrk/markdown-renderer-react':
@@ -306,15 +353,25 @@ importers:
         specifier: ^6.4.1
         version: 6.4.2(@types/node@24.12.4)(jiti@1.21.7)
 
-  packages/content/mdwrkcom-content-pack: {}
+  packages/content/page-template-demo-content-pack:
+    dependencies:
+      '@mdwrk/lander-content-contract':
+        specifier: ^0.1.3
+        version: link:../../lander/lander-content-contract
+      '@mdwrk/lander-page-template-presets':
+        specifier: ^0.1.1
+        version: link:../../lander/lander-page-template-presets
+      '@mdwrk/lander-page-templates':
+        specifier: ^0.1.2
+        version: link:../../lander/lander-page-templates
 
   packages/contracts/extension-host:
     dependencies:
       '@mdwrk/extension-manifest':
-        specifier: ^1.0.3
+        specifier: ^1.0.5
         version: link:../extension-manifest
       '@mdwrk/theme-contract':
-        specifier: ^1.1.3
+        specifier: ^1.1.5
         version: link:../theme-contract
 
   packages/contracts/extension-manifest: {}
@@ -324,19 +381,19 @@ importers:
   packages/editor/markdown-edit-in-renderer-react:
     dependencies:
       '@mdwrk/markdown-editor-core':
-        specifier: ^1.1.6
+        specifier: ^1.1.8
         version: link:../markdown-editor-core
       '@mdwrk/markdown-editor-react':
-        specifier: ^1.1.6
+        specifier: ^1.1.8
         version: link:../markdown-editor-react
       '@mdwrk/markdown-renderer-core':
-        specifier: ^1.1.6
+        specifier: ^1.1.7
         version: link:../../renderer/markdown-renderer-core
       '@mdwrk/markdown-renderer-react':
-        specifier: ^1.1.6
+        specifier: ^1.1.7
         version: link:../../renderer/markdown-renderer-react
       '@mdwrk/ui-tokens':
-        specifier: ^1.2.4
+        specifier: ^1.2.6
         version: link:../../shared/ui-tokens
       react:
         specifier: ^19.0.0
@@ -346,7 +403,7 @@ importers:
         version: 19.2.6(react@19.2.6)
     devDependencies:
       '@mdwrk/testing':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../shared/testing
       '@testing-library/jest-dom':
         specifier: ^6.6.3
@@ -370,7 +427,7 @@ importers:
   packages/editor/markdown-editor-core:
     devDependencies:
       '@mdwrk/markdown-renderer-core':
-        specifier: ^1.1.6
+        specifier: ^1.1.7
         version: link:../../renderer/markdown-renderer-core
       vitest:
         specifier: ^2.1.8
@@ -382,10 +439,10 @@ importers:
         specifier: ^0.0.5
         version: 0.0.5
       '@mdwrk/markdown-editor-core':
-        specifier: ^1.1.6
+        specifier: ^1.1.8
         version: link:../markdown-editor-core
       '@mdwrk/ui-tokens':
-        specifier: ^1.2.4
+        specifier: ^1.2.6
         version: link:../../shared/ui-tokens
       react:
         specifier: ^19.0.0
@@ -395,7 +452,7 @@ importers:
         version: 19.2.6(react@19.2.6)
     devDependencies:
       '@mdwrk/testing':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../shared/testing
       '@testing-library/jest-dom':
         specifier: ^6.6.3
@@ -419,25 +476,25 @@ importers:
   packages/extensions/extension-catalog-hello:
     dependencies:
       '@mdwrk/extension-host':
-        specifier: ^1.0.5
+        specifier: ^1.0.7
         version: link:../../contracts/extension-host
       '@mdwrk/extension-manifest':
-        specifier: ^1.0.3
+        specifier: ^1.0.5
         version: link:../../contracts/extension-manifest
 
   packages/extensions/extension-gemini-agent:
     dependencies:
       '@mdwrk/extension-host':
-        specifier: ^1.0.5
+        specifier: ^1.0.7
         version: link:../../contracts/extension-host
       '@mdwrk/extension-manifest':
-        specifier: ^1.0.3
+        specifier: ^1.0.5
         version: link:../../contracts/extension-manifest
       '@mdwrk/extension-runtime':
-        specifier: ^1.2.2
+        specifier: ^1.2.4
         version: link:../extension-runtime
       '@mdwrk/markdown-renderer-react':
-        specifier: ^1.1.6
+        specifier: ^1.1.7
         version: link:../../renderer/markdown-renderer-react
       react:
         specifier: ^19.0.0
@@ -449,13 +506,13 @@ importers:
   packages/extensions/extension-git-ops:
     dependencies:
       '@mdwrk/extension-host':
-        specifier: ^1.0.5
+        specifier: ^1.0.7
         version: link:../../contracts/extension-host
       '@mdwrk/extension-manifest':
-        specifier: ^1.0.3
+        specifier: ^1.0.5
         version: link:../../contracts/extension-manifest
       '@mdwrk/extension-runtime':
-        specifier: ^1.2.2
+        specifier: ^1.2.4
         version: link:../extension-runtime
       lucide-react:
         specifier: ^0.475.0
@@ -470,13 +527,13 @@ importers:
   packages/extensions/extension-language-pack-studio:
     dependencies:
       '@mdwrk/extension-host':
-        specifier: ^1.0.5
+        specifier: ^1.0.7
         version: link:../../contracts/extension-host
       '@mdwrk/extension-manifest':
-        specifier: ^1.0.3
+        specifier: ^1.0.5
         version: link:../../contracts/extension-manifest
       '@mdwrk/extension-runtime':
-        specifier: ^1.2.2
+        specifier: ^1.2.4
         version: link:../extension-runtime
       lucide-react:
         specifier: ^0.475.0
@@ -489,7 +546,7 @@ importers:
         version: 19.2.6(react@19.2.6)
     devDependencies:
       '@mdwrk/testing':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../shared/testing
       '@testing-library/jest-dom':
         specifier: ^6.6.3
@@ -513,13 +570,13 @@ importers:
   packages/extensions/extension-manager:
     dependencies:
       '@mdwrk/extension-host':
-        specifier: ^1.0.5
+        specifier: ^1.0.7
         version: link:../../contracts/extension-host
       '@mdwrk/extension-manifest':
-        specifier: ^1.0.3
+        specifier: ^1.0.5
         version: link:../../contracts/extension-manifest
       '@mdwrk/extension-runtime':
-        specifier: ^1.2.2
+        specifier: ^1.2.4
         version: link:../extension-runtime
       lucide-react:
         specifier: ^0.475.0
@@ -532,7 +589,7 @@ importers:
         version: 19.2.6(react@19.2.6)
     devDependencies:
       '@mdwrk/testing':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../shared/testing
       '@testing-library/jest-dom':
         specifier: ^6.6.3
@@ -556,37 +613,37 @@ importers:
   packages/extensions/extension-runtime:
     dependencies:
       '@mdwrk/extension-host':
-        specifier: ^1.0.5
+        specifier: ^1.0.7
         version: link:../../contracts/extension-host
       '@mdwrk/extension-manifest':
-        specifier: ^1.0.3
+        specifier: ^1.0.5
         version: link:../../contracts/extension-manifest
       '@mdwrk/theme-contract':
-        specifier: ^1.1.3
+        specifier: ^1.1.5
         version: link:../../contracts/theme-contract
 
   packages/extensions/extension-theme-studio:
     dependencies:
       '@mdwrk/extension-host':
-        specifier: ^1.0.5
+        specifier: ^1.0.7
         version: link:../../contracts/extension-host
       '@mdwrk/extension-manifest':
-        specifier: ^1.0.3
+        specifier: ^1.0.5
         version: link:../../contracts/extension-manifest
       '@mdwrk/extension-runtime':
-        specifier: ^1.2.2
+        specifier: ^1.2.4
         version: link:../extension-runtime
       '@mdwrk/markdown-editor-react':
-        specifier: ^1.1.6
+        specifier: ^1.1.8
         version: link:../../editor/markdown-editor-react
       '@mdwrk/markdown-renderer-react':
-        specifier: ^1.1.6
+        specifier: ^1.1.7
         version: link:../../renderer/markdown-renderer-react
       '@mdwrk/theme-contract':
-        specifier: ^1.1.3
+        specifier: ^1.1.5
         version: link:../../contracts/theme-contract
       '@mdwrk/ui-tokens':
-        specifier: ^1.2.4
+        specifier: ^1.2.6
         version: link:../../shared/ui-tokens
       lucide-react:
         specifier: ^0.475.0
@@ -599,7 +656,7 @@ importers:
         version: 19.2.6(react@19.2.6)
     devDependencies:
       '@mdwrk/testing':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../shared/testing
       '@testing-library/jest-dom':
         specifier: ^6.6.3
@@ -623,13 +680,13 @@ importers:
   packages/extensions/extension-workspace-files:
     dependencies:
       '@mdwrk/extension-host':
-        specifier: ^1.0.5
+        specifier: ^1.0.7
         version: link:../../contracts/extension-host
       '@mdwrk/extension-manifest':
-        specifier: ^1.0.3
+        specifier: ^1.0.5
         version: link:../../contracts/extension-manifest
       '@mdwrk/extension-runtime':
-        specifier: ^1.2.2
+        specifier: ^1.2.4
         version: link:../extension-runtime
       lucide-react:
         specifier: ^0.475.0
@@ -646,43 +703,43 @@ importers:
   packages/lander/lander-core:
     dependencies:
       '@mdwrk/lander-content-contract':
-        specifier: ^0.1.2
+        specifier: ^0.1.3
         version: link:../lander-content-contract
 
   packages/lander/lander-markdown-content-adapter:
     dependencies:
       '@mdwrk/lander-content-contract':
-        specifier: ^0.1.2
+        specifier: ^0.1.3
         version: link:../lander-content-contract
       '@mdwrk/lander-core':
-        specifier: ^0.1.2
+        specifier: ^0.1.5
         version: link:../lander-core
 
   packages/lander/lander-page-template-presets:
     dependencies:
       '@mdwrk/lander-content-contract':
-        specifier: ^0.1.2
+        specifier: ^0.1.3
         version: link:../lander-content-contract
       '@mdwrk/lander-page-templates':
-        specifier: ^0.1.0
+        specifier: ^0.1.2
         version: link:../lander-page-templates
 
   packages/lander/lander-page-templates:
     dependencies:
       '@mdwrk/lander-content-contract':
-        specifier: ^0.1.2
+        specifier: ^0.1.3
         version: link:../lander-content-contract
 
   packages/lander/lander-react:
     dependencies:
       '@mdwrk/lander-content-contract':
-        specifier: ^0.1.2
+        specifier: ^0.1.3
         version: link:../lander-content-contract
       '@mdwrk/lander-core':
-        specifier: ^0.1.2
+        specifier: ^0.1.5
         version: link:../lander-core
       '@mdwrk/structured-data':
-        specifier: ^0.1.3
+        specifier: ^0.1.5
         version: link:../../shared/structured-data
       react:
         specifier: ^19.0.0
@@ -701,7 +758,7 @@ importers:
   packages/lander/lander-seo:
     dependencies:
       '@mdwrk/lander-core':
-        specifier: ^0.1.3
+        specifier: ^0.1.5
         version: link:../lander-core
 
   packages/lander/lander-theme: {}
@@ -711,10 +768,10 @@ importers:
   packages/renderer/markdown-renderer-react:
     dependencies:
       '@mdwrk/markdown-renderer-core':
-        specifier: ^1.1.6
+        specifier: ^1.1.7
         version: link:../markdown-renderer-core
       '@mdwrk/ui-tokens':
-        specifier: ^1.2.4
+        specifier: ^1.2.6
         version: link:../../shared/ui-tokens
       react:
         specifier: ^19.0.0
@@ -724,7 +781,7 @@ importers:
         version: 19.2.6(react@19.2.6)
     devDependencies:
       '@mdwrk/testing':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../shared/testing
       '@testing-library/jest-dom':
         specifier: ^6.6.3
@@ -756,7 +813,7 @@ importers:
   packages/shared/ui-tokens:
     dependencies:
       '@mdwrk/theme-contract':
-        specifier: ^1.1.3
+        specifier: ^1.1.5
         version: link:../../contracts/theme-contract
 
 packages:
@@ -1337,6 +1394,14 @@ packages:
     resolution: {integrity: sha512-9QOtNffcOF/c1seMCDnjckb3R9WHcG34tky+FHpNKKCW0wc/scYLwMtO+ptyGUfMW0/b/n4qRiALlaFHc9Oj7Q==}
     engines: {node: '>= 10.0.0'}
 
+  '@mdwrk/lander-content-contract@0.1.11':
+    resolution: {integrity: sha512-5JQqSe8t+jlYSrF6CD4fNsE2diJxy9MDZzl+ZqOCfCFsRw0qbDyUpmF9Gqn1KTuZe1hVgVDnASKtoKAAgeb8Bg==}
+    engines: {node: '>=20 <23'}
+
+  '@mdwrk/mdwrkcom-content-pack@0.1.10':
+    resolution: {integrity: sha512-S+zwAxGWMByBa2M5rxpMlafKHEleTtZahFkaBXGwL2Td85CSktA6snnJrrOV+W1rf0xq9j06UW+m4GF4JXGOqA==}
+    engines: {node: '>=20 <23'}
+
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -1657,12 +1722,12 @@ packages:
   '@vitest/utils@2.1.9':
     resolution: {integrity: sha512-v0psaMSkNJ3A2NMrUEHFRzJtDPFn+/VWZ5WxImB21T9fjucJRmS7xCS3ppEnARb9y11OAzaD+P2Ps+b+BGX5iQ==}
 
-  '@xmldom/xmldom@0.8.13':
-    resolution: {integrity: sha512-KRYzxepc14G/CEpEGc3Yn+JKaAeT63smlDr+vjB8jRfgTBBI9wRj/nkQEO+ucV8p8I9bfKLWp37uHgFrbntPvw==}
+  '@xmldom/xmldom@0.8.15':
+    resolution: {integrity: sha512-/5NV/vDALVFDXgLmfsy9TRCBlKwO2LNBFzpzvb9iIj+jR+eSc6DLYYvVOdivT/jm7MtU6TebYuRmzEOI7w40UA==}
     engines: {node: '>=10.0.0'}
 
-  '@xmldom/xmldom@0.9.10':
-    resolution: {integrity: sha512-A9gOqLdi6cV4ibazAjcQufGj0B1y/vDqYrcuP6d/6x8P27gRS8643Dj9o1dEKtB6O7fwxb2FgBmJS2mX7gpvdw==}
+  '@xmldom/xmldom@0.9.12':
+    resolution: {integrity: sha512-5AXjrcMClTryPe9LgZrygpB1lj7s0S9E0+W+AHaVKAVyHanafK86iPSvG5xHVSp/jC+VH1UXu0TAEmY279xH7A==}
     engines: {node: '>=14.6'}
 
   abbrev@1.1.1:
@@ -1778,8 +1843,8 @@ packages:
     peerDependencies:
       postcss: ^8.1.0
 
-  axios@1.16.1:
-    resolution: {integrity: sha512-caYkukvroVPO8KrzuJEb50Hm07KwfBZPEC3VeFHTsqWHvKTsy54hjJz9BS/cdaypROE2rH6xvm9mHX4fgWkr3A==}
+  axios@1.20.0:
+    resolution: {integrity: sha512-r8aOh8j9cGKpgQAqpzrUHnSIc6a59Y3Xf/cv8sy1DrHCkZHzQGEuoq1tARk6qSyDdtQGSDgpb9kFlruzPvrgwg==}
 
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -1815,15 +1880,15 @@ packages:
     resolution: {integrity: sha512-apC2+fspHGI3mMKj+dGevkGo/tCqVB8jMb6i+OX+E29p0Iposz07fABkRIfVUPNd5A5VbuOz1bZbnmkKLYF+wQ==}
     engines: {node: '>= 5.10.0'}
 
-  brace-expansion@1.1.14:
-    resolution: {integrity: sha512-MWPGfDxnyzKU7rNOW9SP/c50vi3xrmrua/+6hfPbCS2ABNWfx24vPidzvC7krjU/RTo235sV776ymlsMtGKj8g==}
+  brace-expansion@1.1.21:
+    resolution: {integrity: sha512-9zeA+KLZNNzglF2TPKRQEDyx6Yby7daAkuy8MiPzpXPsYDWi/DRM8jmwUDxokQjYqBpv5DgPiwD4h4ZZSy1Ujw==}
 
-  brace-expansion@2.1.0:
-    resolution: {integrity: sha512-TN1kCZAgdgweJhWWpgKYrQaMNHcDULHkWwQIspdtjV4Y5aurRdZpjAqn6yX3FPqTA9ngHCc4hJxMAMgGfve85w==}
+  brace-expansion@2.1.7:
+    resolution: {integrity: sha512-uZbew1NqdmPDTMJ8ah1y+b+9QEJrfkXFk3RcTQw3X0jW/xRUvFKsg1CfQdSYGdTbXZWExtU3J3ccxtnfw1Fi0g==}
 
-  brace-expansion@5.0.6:
-    resolution: {integrity: sha512-kLpxurY4Z4r9sgMsyG0Z9uzsBlgiU/EFKhj/h91/8yHu0edo7XuixOIH3VcJ8kkxs6/jPzoI6U9Vj3WqbMQ94g==}
-    engines: {node: 18 || 20 || >=22}
+  brace-expansion@5.0.12:
+    resolution: {integrity: sha512-YovQ3rzhaLMIrDjNDMkNS01tea93qhEhG5xy8f6+R0l+dw3Ki+5sCoIoI942iuLZTHWogWktgwVDhU09iNEimQ==}
+    engines: {node: 20 || >=22}
 
   braces@3.0.3:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
@@ -2243,8 +2308,8 @@ packages:
   fast-json-stable-stringify@2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
 
-  fast-uri@3.1.2:
-    resolution: {integrity: sha512-rVjf7ArG3LTk+FS6Yw81V1DLuZl1bRbNrev6Tmd/9RaroeeRRJhAt7jg/6YFxbvAQXUCavSoZhPPj6oOx+5KjQ==}
+  fast-uri@3.1.9:
+    resolution: {integrity: sha512-hS/0Wt3Ya043oKXs0sIxrMpKQITXhMLIrVAKKXi4gozGC9v7YRWVnXIZzjNPTO02M9BdxLCWqK1yRXgNziVyJQ==}
 
   fastq@1.20.1:
     resolution: {integrity: sha512-GGToxJ/w1x32s/D2EKND7kTil4n8OVk/9mycTc4VDza13lOvpUZTGX3mFSCtV9ksdGBVzvsyAVLM6mHFThxXxw==}
@@ -2286,6 +2351,10 @@ packages:
 
   form-data@4.0.5:
     resolution: {integrity: sha512-8RipRLol37bNs2bhoV67fiTEvdTrbMUYcFTiy3+wuuOnUog2QBHCZWXDRijWQfAkhBj2Uf5UnVaiWwA5vdd82w==}
+    engines: {node: '>= 6'}
+
+  form-data@4.0.6:
+    resolution: {integrity: sha512-vKatAh4SlVfgbv+YtmhiRjhEMJsYpsG1Y2rMQtR+SVSbytsSD1YGzDIcrAJmdFec88u/+VoGmxnl+80gL1tRCQ==}
     engines: {node: '>= 6'}
 
   format@0.2.2:
@@ -2417,6 +2486,10 @@ packages:
 
   hasown@2.0.3:
     resolution: {integrity: sha512-ej4AhfhfL2Q2zpMmLo7U1Uv9+PyhIZpgQLGT1F9miIGmiCJIoCgSmczFdrc97mWT4kVY72KA+WnnhJ5pghSvSg==}
+    engines: {node: '>= 0.4'}
+
+  hasown@2.0.4:
+    resolution: {integrity: sha512-T2UbfbBEF32wiepXIsMlTW9+dDYC6wMh/t/vYA4tuOMKqWz/n3vr1NFSxQiyP+zk2mXsoMA/i/7qV6LKut1t1A==}
     engines: {node: '>= 0.4'}
 
   hast-util-parse-selector@2.2.5:
@@ -4388,6 +4461,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@mdwrk/lander-content-contract@0.1.11': {}
+
+  '@mdwrk/mdwrkcom-content-pack@0.1.10':
+    dependencies:
+      '@mdwrk/lander-content-contract': 0.1.11
+
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -4672,6 +4751,18 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@vitejs/plugin-react@5.2.0(vite@6.4.2(@types/node@24.12.4)(jiti@1.21.7))':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-react-jsx-source': 7.27.1(@babel/core@7.29.0)
+      '@rolldown/pluginutils': 1.0.0-rc.3
+      '@types/babel__core': 7.20.5
+      react-refresh: 0.18.0
+      vite: 6.4.2(@types/node@24.12.4)(jiti@1.21.7)
+    transitivePeerDependencies:
+      - supports-color
+
   '@vitest/expect@2.1.9':
     dependencies:
       '@vitest/spy': 2.1.9
@@ -4720,9 +4811,9 @@ snapshots:
       loupe: 3.2.1
       tinyrainbow: 1.2.0
 
-  '@xmldom/xmldom@0.8.13': {}
+  '@xmldom/xmldom@0.8.15': {}
 
-  '@xmldom/xmldom@0.9.10': {}
+  '@xmldom/xmldom@0.9.12': {}
 
   abbrev@1.1.1: {}
 
@@ -4757,7 +4848,7 @@ snapshots:
   ajv@8.20.0:
     dependencies:
       fast-deep-equal: 3.1.3
-      fast-uri: 3.1.2
+      fast-uri: 3.1.9
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
@@ -4857,10 +4948,10 @@ snapshots:
       postcss: 8.5.14
       postcss-value-parser: 4.2.0
 
-  axios@1.16.1:
+  axios@1.20.0:
     dependencies:
       follow-redirects: 1.16.0
-      form-data: 4.0.5
+      form-data: 4.0.6
       https-proxy-agent: 5.0.1
       proxy-from-env: 2.1.0
     transitivePeerDependencies:
@@ -4892,16 +4983,16 @@ snapshots:
     dependencies:
       big-integer: 1.6.52
 
-  brace-expansion@1.1.14:
+  brace-expansion@1.1.21:
     dependencies:
       balanced-match: 1.0.2
       concat-map: 0.0.1
 
-  brace-expansion@2.1.0:
+  brace-expansion@2.1.7:
     dependencies:
       balanced-match: 1.0.2
 
-  brace-expansion@5.0.6:
+  brace-expansion@5.0.12:
     dependencies:
       balanced-match: 4.0.4
 
@@ -5436,7 +5527,7 @@ snapshots:
 
   fast-json-stable-stringify@2.1.0: {}
 
-  fast-uri@3.1.2: {}
+  fast-uri@3.1.9: {}
 
   fastq@1.20.1:
     dependencies:
@@ -5475,6 +5566,14 @@ snapshots:
       combined-stream: 1.0.8
       es-set-tostringtag: 2.1.0
       hasown: 2.0.3
+      mime-types: 2.1.35
+
+  form-data@4.0.6:
+    dependencies:
+      asynckit: 0.4.0
+      combined-stream: 1.0.8
+      es-set-tostringtag: 2.1.0
+      hasown: 2.0.4
       mime-types: 2.1.35
 
   format@0.2.2: {}
@@ -5640,6 +5739,10 @@ snapshots:
       has-symbols: 1.1.0
 
   hasown@2.0.3:
+    dependencies:
+      function-bind: 1.1.2
+
+  hasown@2.0.4:
     dependencies:
       function-bind: 1.1.2
 
@@ -5995,19 +6098,19 @@ snapshots:
 
   minimatch@10.2.5:
     dependencies:
-      brace-expansion: 5.0.6
+      brace-expansion: 5.0.12
 
   minimatch@3.1.5:
     dependencies:
-      brace-expansion: 1.1.14
+      brace-expansion: 1.1.21
 
   minimatch@5.1.9:
     dependencies:
-      brace-expansion: 2.1.0
+      brace-expansion: 2.1.7
 
   minimatch@9.0.9:
     dependencies:
-      brace-expansion: 2.1.0
+      brace-expansion: 2.1.7
 
   minimist@1.2.8: {}
 
@@ -6213,13 +6316,13 @@ snapshots:
 
   plist@3.1.0:
     dependencies:
-      '@xmldom/xmldom': 0.8.13
+      '@xmldom/xmldom': 0.8.15
       base64-js: 1.5.1
       xmlbuilder: 15.1.1
 
   plist@3.1.1:
     dependencies:
-      '@xmldom/xmldom': 0.9.10
+      '@xmldom/xmldom': 0.9.12
       base64-js: 1.5.1
       xmlbuilder: 15.1.1
 
@@ -6974,7 +7077,7 @@ snapshots:
 
   wait-on@8.0.5:
     dependencies:
-      axios: 1.16.1
+      axios: 1.20.0
       joi: 18.2.1
       lodash: 4.18.1
       minimist: 1.2.8
