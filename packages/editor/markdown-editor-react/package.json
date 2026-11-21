@@ -43,7 +43,7 @@
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "jsdom": "^25.0.1",
-    "vitest": "^2.1.8"
+    "vitest": "^4.1.12"
   },
   "scripts": {
     "build:deps": "npm run build -w @mdwrk/markdown-editor-core && npm run build -w @mdwrk/ui-tokens",
