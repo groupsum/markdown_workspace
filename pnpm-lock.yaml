@@ -58,7 +58,7 @@ importers:
         specifier: ^1.2.4
         version: link:../../packages/shared/i18n
       '@mdwrk/icons':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../packages/shared/icons
       '@mdwrk/markdown-edit-in-renderer-react':
         specifier: ^1.0.11
@@ -76,10 +76,10 @@ importers:
         specifier: ^1.1.6
         version: link:../../packages/renderer/markdown-renderer-react
       '@mdwrk/theme-contract':
-        specifier: ^1.1.3
+        specifier: ^1.1.4
         version: link:../../packages/contracts/theme-contract
       '@mdwrk/ui-tokens':
-        specifier: ^1.2.4
+        specifier: ^1.2.5
         version: link:../../packages/shared/ui-tokens
       jszip:
         specifier: ^3.10.1
@@ -197,6 +197,9 @@ importers:
       '@mdwrk/markdown-renderer-react':
         specifier: ^1.1.1
         version: link:../../packages/renderer/markdown-renderer-react
+      '@mdwrk/mdwrkcom-content-pack':
+        specifier: ^0.1.10
+        version: 0.1.10
       '@mdwrk/structured-data':
         specifier: ^0.1.1
         version: link:../../packages/shared/structured-data
@@ -213,8 +216,8 @@ importers:
         specifier: ^19.2.4
         version: 19.2.6(react@19.2.6)
       react-router-dom:
-        specifier: ^7.9.3
-        version: 7.15.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        specifier: 7.18.2
+        version: 7.18.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
     devDependencies:
       '@types/node':
         specifier: ^22.14.0
@@ -275,6 +278,40 @@ importers:
         specifier: ^6.4.1
         version: 6.4.2(@types/node@24.12.4)(jiti@1.21.7)
 
+  examples/page-template-demo:
+    dependencies:
+      '@mdwrk/lander-core':
+        specifier: ^0.1.0
+        version: link:../../packages/lander/lander-core
+      '@mdwrk/lander-react':
+        specifier: ^0.1.0
+        version: link:../../packages/lander/lander-react
+      '@mdwrk/page-template-demo-content-pack':
+        specifier: ^0.1.0
+        version: link:../../packages/content/page-template-demo-content-pack
+      react:
+        specifier: ^19.2.4
+        version: 19.2.6
+      react-dom:
+        specifier: ^19.2.4
+        version: 19.2.6(react@19.2.6)
+    devDependencies:
+      '@types/react':
+        specifier: ^19.0.8
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: ^19.0.3
+        version: 19.2.3(@types/react@19.2.14)
+      '@vitejs/plugin-react':
+        specifier: ^5.0.0
+        version: 5.2.0(vite@6.4.2(@types/node@24.12.4)(jiti@1.21.7))
+      typescript:
+        specifier: ~5.8.2
+        version: 5.8.3
+      vite:
+        specifier: ^6.2.0
+        version: 6.4.2(@types/node@24.12.4)(jiti@1.21.7)
+
   examples/renderer-basic:
     dependencies:
       '@mdwrk/markdown-renderer-react':
@@ -306,15 +343,25 @@ importers:
         specifier: ^6.4.1
         version: 6.4.2(@types/node@24.12.4)(jiti@1.21.7)
 
-  packages/content/mdwrkcom-content-pack: {}
+  packages/content/page-template-demo-content-pack:
+    dependencies:
+      '@mdwrk/lander-content-contract':
+        specifier: ^0.1.3
+        version: link:../../lander/lander-content-contract
+      '@mdwrk/lander-page-template-presets':
+        specifier: ^0.1.1
+        version: link:../../lander/lander-page-template-presets
+      '@mdwrk/lander-page-templates':
+        specifier: ^0.1.2
+        version: link:../../lander/lander-page-templates
 
   packages/contracts/extension-host:
     dependencies:
       '@mdwrk/extension-manifest':
-        specifier: ^1.0.3
+        specifier: ^1.0.5
         version: link:../extension-manifest
       '@mdwrk/theme-contract':
-        specifier: ^1.1.3
+        specifier: ^1.1.5
         version: link:../theme-contract
 
   packages/contracts/extension-manifest: {}
@@ -324,19 +371,19 @@ importers:
   packages/editor/markdown-edit-in-renderer-react:
     dependencies:
       '@mdwrk/markdown-editor-core':
-        specifier: ^1.1.6
+        specifier: ^1.1.8
         version: link:../markdown-editor-core
       '@mdwrk/markdown-editor-react':
-        specifier: ^1.1.6
+        specifier: ^1.1.8
         version: link:../markdown-editor-react
       '@mdwrk/markdown-renderer-core':
-        specifier: ^1.1.6
+        specifier: ^1.1.7
         version: link:../../renderer/markdown-renderer-core
       '@mdwrk/markdown-renderer-react':
-        specifier: ^1.1.6
+        specifier: ^1.1.7
         version: link:../../renderer/markdown-renderer-react
       '@mdwrk/ui-tokens':
-        specifier: ^1.2.4
+        specifier: ^1.2.6
         version: link:../../shared/ui-tokens
       react:
         specifier: ^19.0.0
@@ -346,7 +393,7 @@ importers:
         version: 19.2.6(react@19.2.6)
     devDependencies:
       '@mdwrk/testing':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../shared/testing
       '@testing-library/jest-dom':
         specifier: ^6.6.3
@@ -370,7 +417,7 @@ importers:
   packages/editor/markdown-editor-core:
     devDependencies:
       '@mdwrk/markdown-renderer-core':
-        specifier: ^1.1.6
+        specifier: ^1.1.7
         version: link:../../renderer/markdown-renderer-core
       vitest:
         specifier: ^2.1.8
@@ -382,10 +429,10 @@ importers:
         specifier: ^0.0.5
         version: 0.0.5
       '@mdwrk/markdown-editor-core':
-        specifier: ^1.1.6
+        specifier: ^1.1.8
         version: link:../markdown-editor-core
       '@mdwrk/ui-tokens':
-        specifier: ^1.2.4
+        specifier: ^1.2.6
         version: link:../../shared/ui-tokens
       react:
         specifier: ^19.0.0
@@ -395,7 +442,7 @@ importers:
         version: 19.2.6(react@19.2.6)
     devDependencies:
       '@mdwrk/testing':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../shared/testing
       '@testing-library/jest-dom':
         specifier: ^6.6.3
@@ -419,25 +466,25 @@ importers:
   packages/extensions/extension-catalog-hello:
     dependencies:
       '@mdwrk/extension-host':
-        specifier: ^1.0.5
+        specifier: ^1.0.7
         version: link:../../contracts/extension-host
       '@mdwrk/extension-manifest':
-        specifier: ^1.0.3
+        specifier: ^1.0.5
         version: link:../../contracts/extension-manifest
 
   packages/extensions/extension-gemini-agent:
     dependencies:
       '@mdwrk/extension-host':
-        specifier: ^1.0.5
+        specifier: ^1.0.7
         version: link:../../contracts/extension-host
       '@mdwrk/extension-manifest':
-        specifier: ^1.0.3
+        specifier: ^1.0.5
         version: link:../../contracts/extension-manifest
       '@mdwrk/extension-runtime':
-        specifier: ^1.2.2
+        specifier: ^1.2.4
         version: link:../extension-runtime
       '@mdwrk/markdown-renderer-react':
-        specifier: ^1.1.6
+        specifier: ^1.1.7
         version: link:../../renderer/markdown-renderer-react
       react:
         specifier: ^19.0.0
@@ -449,13 +496,13 @@ importers:
   packages/extensions/extension-git-ops:
     dependencies:
       '@mdwrk/extension-host':
-        specifier: ^1.0.5
+        specifier: ^1.0.7
         version: link:../../contracts/extension-host
       '@mdwrk/extension-manifest':
-        specifier: ^1.0.3
+        specifier: ^1.0.5
         version: link:../../contracts/extension-manifest
       '@mdwrk/extension-runtime':
-        specifier: ^1.2.2
+        specifier: ^1.2.4
         version: link:../extension-runtime
       lucide-react:
         specifier: ^0.475.0
@@ -470,13 +517,13 @@ importers:
   packages/extensions/extension-language-pack-studio:
     dependencies:
       '@mdwrk/extension-host':
-        specifier: ^1.0.5
+        specifier: ^1.0.7
         version: link:../../contracts/extension-host
       '@mdwrk/extension-manifest':
-        specifier: ^1.0.3
+        specifier: ^1.0.5
         version: link:../../contracts/extension-manifest
       '@mdwrk/extension-runtime':
-        specifier: ^1.2.2
+        specifier: ^1.2.4
         version: link:../extension-runtime
       lucide-react:
         specifier: ^0.475.0
@@ -489,7 +536,7 @@ importers:
         version: 19.2.6(react@19.2.6)
     devDependencies:
       '@mdwrk/testing':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../shared/testing
       '@testing-library/jest-dom':
         specifier: ^6.6.3
@@ -513,13 +560,13 @@ importers:
   packages/extensions/extension-manager:
     dependencies:
       '@mdwrk/extension-host':
-        specifier: ^1.0.5
+        specifier: ^1.0.7
         version: link:../../contracts/extension-host
       '@mdwrk/extension-manifest':
-        specifier: ^1.0.3
+        specifier: ^1.0.5
         version: link:../../contracts/extension-manifest
       '@mdwrk/extension-runtime':
-        specifier: ^1.2.2
+        specifier: ^1.2.4
         version: link:../extension-runtime
       lucide-react:
         specifier: ^0.475.0
@@ -532,7 +579,7 @@ importers:
         version: 19.2.6(react@19.2.6)
     devDependencies:
       '@mdwrk/testing':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../shared/testing
       '@testing-library/jest-dom':
         specifier: ^6.6.3
@@ -556,37 +603,37 @@ importers:
   packages/extensions/extension-runtime:
     dependencies:
       '@mdwrk/extension-host':
-        specifier: ^1.0.5
+        specifier: ^1.0.7
         version: link:../../contracts/extension-host
       '@mdwrk/extension-manifest':
-        specifier: ^1.0.3
+        specifier: ^1.0.5
         version: link:../../contracts/extension-manifest
       '@mdwrk/theme-contract':
-        specifier: ^1.1.3
+        specifier: ^1.1.5
         version: link:../../contracts/theme-contract
 
   packages/extensions/extension-theme-studio:
     dependencies:
       '@mdwrk/extension-host':
-        specifier: ^1.0.5
+        specifier: ^1.0.7
         version: link:../../contracts/extension-host
       '@mdwrk/extension-manifest':
-        specifier: ^1.0.3
+        specifier: ^1.0.5
         version: link:../../contracts/extension-manifest
       '@mdwrk/extension-runtime':
-        specifier: ^1.2.2
+        specifier: ^1.2.4
         version: link:../extension-runtime
       '@mdwrk/markdown-editor-react':
-        specifier: ^1.1.6
+        specifier: ^1.1.8
         version: link:../../editor/markdown-editor-react
       '@mdwrk/markdown-renderer-react':
-        specifier: ^1.1.6
+        specifier: ^1.1.7
         version: link:../../renderer/markdown-renderer-react
       '@mdwrk/theme-contract':
-        specifier: ^1.1.3
+        specifier: ^1.1.5
         version: link:../../contracts/theme-contract
       '@mdwrk/ui-tokens':
-        specifier: ^1.2.4
+        specifier: ^1.2.6
         version: link:../../shared/ui-tokens
       lucide-react:
         specifier: ^0.475.0
@@ -599,7 +646,7 @@ importers:
         version: 19.2.6(react@19.2.6)
     devDependencies:
       '@mdwrk/testing':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../shared/testing
       '@testing-library/jest-dom':
         specifier: ^6.6.3
@@ -623,13 +670,13 @@ importers:
   packages/extensions/extension-workspace-files:
     dependencies:
       '@mdwrk/extension-host':
-        specifier: ^1.0.5
+        specifier: ^1.0.7
         version: link:../../contracts/extension-host
       '@mdwrk/extension-manifest':
-        specifier: ^1.0.3
+        specifier: ^1.0.5
         version: link:../../contracts/extension-manifest
       '@mdwrk/extension-runtime':
-        specifier: ^1.2.2
+        specifier: ^1.2.4
         version: link:../extension-runtime
       lucide-react:
         specifier: ^0.475.0
@@ -646,43 +693,43 @@ importers:
   packages/lander/lander-core:
     dependencies:
       '@mdwrk/lander-content-contract':
-        specifier: ^0.1.2
+        specifier: ^0.1.3
         version: link:../lander-content-contract
 
   packages/lander/lander-markdown-content-adapter:
     dependencies:
       '@mdwrk/lander-content-contract':
-        specifier: ^0.1.2
+        specifier: ^0.1.3
         version: link:../lander-content-contract
       '@mdwrk/lander-core':
-        specifier: ^0.1.2
+        specifier: ^0.1.5
         version: link:../lander-core
 
   packages/lander/lander-page-template-presets:
     dependencies:
       '@mdwrk/lander-content-contract':
-        specifier: ^0.1.2
+        specifier: ^0.1.3
         version: link:../lander-content-contract
       '@mdwrk/lander-page-templates':
-        specifier: ^0.1.0
+        specifier: ^0.1.2
         version: link:../lander-page-templates
 
   packages/lander/lander-page-templates:
     dependencies:
       '@mdwrk/lander-content-contract':
-        specifier: ^0.1.2
+        specifier: ^0.1.3
         version: link:../lander-content-contract
 
   packages/lander/lander-react:
     dependencies:
       '@mdwrk/lander-content-contract':
-        specifier: ^0.1.2
+        specifier: ^0.1.3
         version: link:../lander-content-contract
       '@mdwrk/lander-core':
-        specifier: ^0.1.2
+        specifier: ^0.1.5
         version: link:../lander-core
       '@mdwrk/structured-data':
-        specifier: ^0.1.3
+        specifier: ^0.1.5
         version: link:../../shared/structured-data
       react:
         specifier: ^19.0.0
@@ -701,7 +748,7 @@ importers:
   packages/lander/lander-seo:
     dependencies:
       '@mdwrk/lander-core':
-        specifier: ^0.1.3
+        specifier: ^0.1.5
         version: link:../lander-core
 
   packages/lander/lander-theme: {}
@@ -711,10 +758,10 @@ importers:
   packages/renderer/markdown-renderer-react:
     dependencies:
       '@mdwrk/markdown-renderer-core':
-        specifier: ^1.1.6
+        specifier: ^1.1.7
         version: link:../markdown-renderer-core
       '@mdwrk/ui-tokens':
-        specifier: ^1.2.4
+        specifier: ^1.2.6
         version: link:../../shared/ui-tokens
       react:
         specifier: ^19.0.0
@@ -724,7 +771,7 @@ importers:
         version: 19.2.6(react@19.2.6)
     devDependencies:
       '@mdwrk/testing':
-        specifier: ^1.0.3
+        specifier: ^1.0.4
         version: link:../../shared/testing
       '@testing-library/jest-dom':
         specifier: ^6.6.3
@@ -756,7 +803,7 @@ importers:
   packages/shared/ui-tokens:
     dependencies:
       '@mdwrk/theme-contract':
-        specifier: ^1.1.3
+        specifier: ^1.1.5
         version: link:../../contracts/theme-contract
 
 packages:
@@ -1337,6 +1384,14 @@ packages:
     resolution: {integrity: sha512-9QOtNffcOF/c1seMCDnjckb3R9WHcG34tky+FHpNKKCW0wc/scYLwMtO+ptyGUfMW0/b/n4qRiALlaFHc9Oj7Q==}
     engines: {node: '>= 10.0.0'}
 
+  '@mdwrk/lander-content-contract@0.1.11':
+    resolution: {integrity: sha512-5JQqSe8t+jlYSrF6CD4fNsE2diJxy9MDZzl+ZqOCfCFsRw0qbDyUpmF9Gqn1KTuZe1hVgVDnASKtoKAAgeb8Bg==}
+    engines: {node: '>=20 <23'}
+
+  '@mdwrk/mdwrkcom-content-pack@0.1.10':
+    resolution: {integrity: sha512-S+zwAxGWMByBa2M5rxpMlafKHEleTtZahFkaBXGwL2Td85CSktA6snnJrrOV+W1rf0xq9j06UW+m4GF4JXGOqA==}
+    engines: {node: '>=20 <23'}
+
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -1660,10 +1715,12 @@ packages:
   '@xmldom/xmldom@0.8.13':
     resolution: {integrity: sha512-KRYzxepc14G/CEpEGc3Yn+JKaAeT63smlDr+vjB8jRfgTBBI9wRj/nkQEO+ucV8p8I9bfKLWp37uHgFrbntPvw==}
     engines: {node: '>=10.0.0'}
+    deprecated: this version has critical issues, please update to the latest version
 
   '@xmldom/xmldom@0.9.10':
     resolution: {integrity: sha512-A9gOqLdi6cV4ibazAjcQufGj0B1y/vDqYrcuP6d/6x8P27gRS8643Dj9o1dEKtB6O7fwxb2FgBmJS2mX7gpvdw==}
     engines: {node: '>=14.6'}
+    deprecated: this version has critical issues, please update to the latest version
 
   abbrev@1.1.1:
     resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
@@ -3136,15 +3193,15 @@ packages:
     resolution: {integrity: sha512-QgT5//D3jfjJb6Gsjxv0Slpj23ip+HtOpnNgnb2S5zU3CB26G/IDPGoy4RJB42wzFE46DRsstbW6tKHoKbhAxw==}
     engines: {node: '>=0.10.0'}
 
-  react-router-dom@7.15.1:
-    resolution: {integrity: sha512-AzF62gjY6U9rkMq4RfP/r2EVtQ7DMfNMjyOp/flLTCrtRylLiK4wT4pSq6O8rOXZ2eXdZYJPEYe+ifomiv+Igg==}
+  react-router-dom@7.18.2:
+    resolution: {integrity: sha512-AIKJ/jgGlFb3EbfCXk5Gzshiwt+l3mqbCrNjmEWMMjqQxNJ3svBa6bgzFyCC2Sw3RA0VWF1kg3uQf2OFhxb8hw==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       react: '>=18'
       react-dom: '>=18'
 
-  react-router@7.15.1:
-    resolution: {integrity: sha512-R8rl9HhgikFYoPJymnUtPXWbnDb3oget6lQnfIoupbt61aT9aOhRkDsY2XRhZRyX1Z/8a5sL74fXmFNm3NRK5A==}
+  react-router@7.18.2:
+    resolution: {integrity: sha512-aUVMjFm3GAPTTZL7oYr5E7ETiqfQCHRLH+B+5afnICvf0r7kkK4eR6SMuwbSTJw/7t+12khT/Kahij49fqOCIg==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       react: '>=18'
@@ -4388,6 +4445,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@mdwrk/lander-content-contract@0.1.11': {}
+
+  '@mdwrk/mdwrkcom-content-pack@0.1.10':
+    dependencies:
+      '@mdwrk/lander-content-contract': 0.1.11
+
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -4669,6 +4732,18 @@ snapshots:
       '@types/babel__core': 7.20.5
       react-refresh: 0.18.0
       vite: 6.4.2(@types/node@22.19.19)(jiti@1.21.7)
+    transitivePeerDependencies:
+      - supports-color
+
+  '@vitejs/plugin-react@5.2.0(vite@6.4.2(@types/node@24.12.4)(jiti@1.21.7))':
+    dependencies:
+      '@babel/core': 7.29.0
+      '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.29.0)
+      '@babel/plugin-transform-react-jsx-source': 7.27.1(@babel/core@7.29.0)
+      '@rolldown/pluginutils': 1.0.0-rc.3
+      '@types/babel__core': 7.20.5
+      react-refresh: 0.18.0
+      vite: 6.4.2(@types/node@24.12.4)(jiti@1.21.7)
     transitivePeerDependencies:
       - supports-color
 
@@ -6321,13 +6396,13 @@ snapshots:
 
   react-refresh@0.18.0: {}
 
-  react-router-dom@7.15.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
+  react-router-dom@7.18.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
     dependencies:
       react: 19.2.6
       react-dom: 19.2.6(react@19.2.6)
-      react-router: 7.15.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      react-router: 7.18.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
 
-  react-router@7.15.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
+  react-router@7.18.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
     dependencies:
       cookie: 1.1.1
       react: 19.2.6
