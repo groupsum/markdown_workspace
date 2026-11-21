@@ -147,13 +147,13 @@ importers:
     dependencies:
       '@capacitor/android':
         specifier: ^7.4.3
-        version: 7.6.5(@capacitor/core@7.6.5)
+        version: 7.6.10(@capacitor/core@7.6.10)
       '@capacitor/cli':
         specifier: ^7.4.3
-        version: 7.6.5
+        version: 7.6.10
       '@capacitor/core':
         specifier: ^7.4.3
-        version: 7.6.5
+        version: 7.6.10
     devDependencies:
       '@types/node':
         specifier: ^24.6.1
@@ -861,18 +861,18 @@ packages:
     resolution: {integrity: sha512-LwdZHpScM4Qz8Xw2iKSzS+cfglZzJGvofQICy7W7v4caru4EaAmyUuO6BGrbyQ2mYV11W0U8j5mBhd14dd3B0A==}
     engines: {node: '>=6.9.0'}
 
-  '@capacitor/android@7.6.5':
-    resolution: {integrity: sha512-FCNSo5bWkqCIuNt2OgG6IUsJJaYlghzbzlFf4IiHkFtir18FCyqHVGHszvtXB+npT7HQ9JQOZ4MQRDsgczKEGQ==}
+  '@capacitor/android@7.6.10':
+    resolution: {integrity: sha512-94DBImYZyDA9RnO5ks3MI/j6rRFs1uK5DR2ft/rBIsvsltDT4w1CSuM8U7vKmKEGRmAfP6vH/woJkBF69fZa4A==}
     peerDependencies:
       '@capacitor/core': ^7.6.0
 
-  '@capacitor/cli@7.6.5':
-    resolution: {integrity: sha512-nlhNoWZIL7YcV1JgNP8+p7WAVIG+zwsY20ZQJ0zd+2lLeCx9MijfELLhLzMCq33c2pILwOvLww8HUqZ5uYCvHg==}
+  '@capacitor/cli@7.6.10':
+    resolution: {integrity: sha512-8S0h44+339hCJyDw0EWqKz4ivR08tzSY35WzSs49pQ4gNOrGiyKpBUaZc08zlJgvN8yfzMY1pi8QfKDsSn1eHg==}
     engines: {node: '>=20.0.0'}
     hasBin: true
 
-  '@capacitor/core@7.6.5':
-    resolution: {integrity: sha512-JWyxD9LaK1oY588B/khJIG3Ec4NHI/Ki4v1b4XzqPNt2a27au0F2AhLTwYexV4Bp3Ruxf+8oYqxFAC8/7sGBWA==}
+  '@capacitor/core@7.6.10':
+    resolution: {integrity: sha512-foYHd//t6E3RTELVG8wdkp5jVnmLcHKUurAa9BA8EUSNd2eY0SijCHpfO0bFwYBP5DrCeXwgSFYi3NJw413gtQ==}
 
   '@chenglou/pretext@0.0.5':
     resolution: {integrity: sha512-A8GZN10REdFGsyuiUgLV8jjPDDFMg5GmgxGWV0I3igxBOnzj+jgz2VMmVD7g+SFyoctfeqHFxbNatKSzVRWtRg==}
@@ -3935,11 +3935,11 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
-  '@capacitor/android@7.6.5(@capacitor/core@7.6.5)':
+  '@capacitor/android@7.6.10(@capacitor/core@7.6.10)':
     dependencies:
-      '@capacitor/core': 7.6.5
+      '@capacitor/core': 7.6.10
 
-  '@capacitor/cli@7.6.5':
+  '@capacitor/cli@7.6.10':
     dependencies:
       '@ionic/cli-framework-output': 2.2.8
       '@ionic/utils-subprocess': 3.0.1
@@ -3961,7 +3961,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@capacitor/core@7.6.5':
+  '@capacitor/core@7.6.10':
     dependencies:
       tslib: 2.8.1
 
