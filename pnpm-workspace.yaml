@@ -18,3 +18,7 @@ overrides:
   "plist@3.1.0>@xmldom/xmldom": "0.8.15"
   "plist@3.1.1>@xmldom/xmldom": "0.9.12"
   "wait-on@8.0.5>axios": "1.20.0"
+  "browserslist@>=4 <4.28.7": "4.28.7"
+  "js-yaml@>=4 <4.3.2": "4.3.2"
+  "follow-redirects@>=1 <1.16.2": "1.16.2"
+  "form-data@>=4 <4.0.6": "4.0.6"
