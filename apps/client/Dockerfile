@@ -19,7 +19,7 @@ RUN npm install --install-strategy=nested
 RUN printf '#!/bin/sh\nnode /app/apps/client/node_modules/typescript/bin/tsc "$@"\n' > /usr/local/bin/tsc && chmod +x /usr/local/bin/tsc
 RUN npm run build:client
 
-FROM nginx:1.27-alpine
+FROM nginx:1.30.7-alpine@sha256:caf4e1e032a20f9c3c5e28fc7f25ffd768ad8677b4975c54193075997b3a97e3
 
 COPY --from=builder /app/apps/client/dist /usr/share/nginx/html
 COPY apps/client/nginx.conf /etc/nginx/conf.d/default.conf
