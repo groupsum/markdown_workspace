@@ -28,7 +28,7 @@
   "dependencies": {},
   "devDependencies": {
     "@mdwrk/markdown-renderer-core": "^1.1.7",
-    "vitest": "^2.1.8"
+    "vitest": "^4.1.12"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
