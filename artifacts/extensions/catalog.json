@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-05-06T09:37:01.934Z",
+  "generatedAt": "2026-11-24T04:03:46.482Z",
   "generator": "tools/extensions/build-installable-extensions.mjs",
   "baseUrl": "./",
   "ok": true,
   "extensions": [
     {
-      "entryId": "external.catalog-hello@1.1.2",
+      "entryId": "external.catalog-hello@1.2.2",
       "extensionId": "external.catalog-hello",
       "packageName": "@mdwrk/extension-catalog-hello",
-      "version": "1.1.2",
+      "version": "1.2.2",
       "displayName": {
         "defaultMessage": "Catalog Hello",
         "key": "manifest.displayName",
@@ -38,7 +38,8 @@
         "view.register",
         "actionRail.register",
         "notification.publish",
-        "settings.read"
+        "settings.read",
+        "hook.register"
       ],
       "compatibility": {
         "manifestVersion": 1,
@@ -51,19 +52,19 @@
         "en"
       ],
       "urls": {
-        "manifest": "artifacts/extensions/external.catalog-hello/1.1.2/manifest.json",
-        "signedManifest": "artifacts/extensions/external.catalog-hello/1.1.2/signed-manifest.json",
-        "module": "artifacts/extensions/external.catalog-hello/1.1.2/dist/index.js",
-        "integrity": "artifacts/extensions/external.catalog-hello/1.1.2/integrity.json"
+        "manifest": "artifacts/extensions/external.catalog-hello/1.2.2/manifest.json",
+        "signedManifest": "artifacts/extensions/external.catalog-hello/1.2.2/signed-manifest.json",
+        "module": "artifacts/extensions/external.catalog-hello/1.2.2/dist/index.js",
+        "integrity": "artifacts/extensions/external.catalog-hello/1.2.2/integrity.json"
       },
       "integrity": {
         "manifest": {
           "algorithm": "sha256",
-          "digest": "30dce25700f554c9e4260cc74000534aa56ddb8764f894fed3f1fa06782d7773"
+          "digest": "7a692d6b9240cdc6609caf782af22055b562a873b05c5c637c23bbd03047ffe8"
         },
         "module": {
           "algorithm": "sha256",
-          "digest": "e66ffd71b532edaed6cee06ee3bcd3a11695deff69824c6e4ab3e8b57f713b31"
+          "digest": "16ee7890ec1ea443b409c26e9801c502875a0bf8aa98227f97169559eb4d5113"
         }
       },
       "support": {
