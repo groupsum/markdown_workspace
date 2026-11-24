@@ -1,14 +1,18 @@
 packages:
-  - "apps/*"
-  - "packages/contracts/*"
-  - "packages/renderer/*"
-  - "packages/editor/*"
-  - "packages/lander/*"
-  - "packages/content/*"
-  - "packages/extensions/*"
-  - "packages/shared/*"
-  - "examples/*"
-
+  - apps/*
+  - packages/contracts/*
+  - packages/renderer/*
+  - packages/editor/*
+  - packages/lander/*
+  - packages/content/*
+  - packages/extensions/*
+  - packages/shared/*
+  - examples/*
 overrides:
-  'postcss-selector-parser@>=6 <6.1.5': 6.1.5
-  'prismjs@<1.30.0': 1.30.0
+  tar@>=7 <7.5.21: 7.5.23
+  joi@>=18 <18.3.1: 18.3.1
+  ws@>=8 <8.21.0: 8.21.0
+  tmp@<0.2.6: 0.2.6
+  "@babel/core@<7.29.6": 7.29.6
+  postcss-selector-parser@>=6 <6.1.5: 6.1.5
+  prismjs@<1.30.0: 1.30.0

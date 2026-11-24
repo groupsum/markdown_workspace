@@ -1,7 +1,7 @@
 {
   "name": "markdown_workspace",
   "private": true,
-  "version": "0.2.146",
+  "version": "0.2.151",
   "packageManager": "pnpm@10.11.0",
   "workspaces": [
     "apps/*",
@@ -159,6 +159,7 @@
   "keywords": [],
   "license": "Apache-2.0",
   "overrides": {
+    "vite@>=5 <6.4.4": "6.4.6",
     "postcss@>=8 <8.5.23": "8.5.33",
     "prismjs@<1.30.0": "1.30.0"
   }
