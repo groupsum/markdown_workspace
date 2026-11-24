@@ -1,0 +1,55 @@
+{
+  "generatedAt": "2026-11-24T04:03:46.831Z",
+  "artifact": {
+    "id": "core.language-pack-studio",
+    "packageName": "@mdwrk/extension-language-pack-studio",
+    "version": "1.0.6",
+    "kind": "bundled",
+    "artifactPath": "artifacts/extensions/core.language-pack-studio/1.0.6",
+    "entryModulePath": "dist/index.js",
+    "supportedLocales": [
+      "en"
+    ],
+    "generatedAt": "2026-11-24T04:03:45.104Z"
+  },
+  "files": [
+    {
+      "path": "installable.json",
+      "sha256": "317ff41a30b217d66811783b86fca6187938a1edbb6ae9a8d326a17deb26fb5d"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6"
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "50e4fc4f15c70a532051d1f41707793a5bf3edc6b3f26028329f730a5378a64c"
+    },
+    {
+      "path": "package.json",
+      "sha256": "26535fd94f04916ee1a3c820619a691750cb98082ff2a242f73347594cc830ea"
+    },
+    {
+      "path": "portable-package.json",
+      "sha256": "542ff32a58fba6adddc4d42b2e4cb8d576371ff85a6a1220a5e4af72bf806d2c"
+    },
+    {
+      "path": "README.md",
+      "sha256": "5460f766b3a5eee2bceafb2d4201c8d09c0df2a0d45d353984541f70fad1d2b6"
+    },
+    {
+      "path": "signed-manifest.json",
+      "sha256": "dc9700e6110a88e09ecfefbce89c01b785a0e62077cba2a50509e2a3809ac1d4"
+    }
+  ],
+  "provenance": {
+    "gitSha": null,
+    "gitRef": null,
+    "workflow": null
+  },
+  "signer": {
+    "keyId": "dev-ecdsa-p256-sha256",
+    "label": "Development sample signer",
+    "publisher": "demo-catalog"
+  }
+}
