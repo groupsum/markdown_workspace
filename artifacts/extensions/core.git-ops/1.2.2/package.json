@@ -1,0 +1,73 @@
+{
+  "name": "@mdwrk/extension-git-ops",
+  "version": "1.2.4",
+  "type": "module",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20 <23"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "dependencies": {
+    "@mdwrk/extension-host": "^1.0.7",
+    "@mdwrk/extension-manifest": "^1.0.5",
+    "@mdwrk/extension-runtime": "^1.2.4",
+    "lucide-react": "^0.475.0"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "scripts": {
+    "build:deps": "npm run build -w @mdwrk/extension-manifest && npm run build -w @mdwrk/extension-host && npm run build -w @mdwrk/extension-runtime",
+    "build": "npm run build:deps && tsc -p tsconfig.json",
+    "typecheck": "npm run build:deps && tsc --noEmit -p tsconfig.json",
+    "lint": "npm run typecheck",
+    "test": "npm run build && node ./tests/run-smoke.mjs",
+    "prepack": "npm run build",
+    "postinstall": "node ../../../tools/release/warn-deprecated-package.mjs"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./version": {
+      "types": "./dist/version.d.ts",
+      "import": "./dist/version.js"
+    },
+    "./manifest": {
+      "types": "./dist/manifest.d.ts",
+      "import": "./dist/manifest.js"
+    },
+    "./bundled": {
+      "types": "./dist/createGitOpsBundledEntry.d.ts",
+      "import": "./dist/createGitOpsBundledEntry.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "homepage": "https://mdwrk.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/groupsum/mdwrk",
+    "directory": "packages/extensions/extension-git-ops"
+  },
+  "bugs": {
+    "url": "https://github.com/groupsum/mdwrk/issues"
+  },
+  "keywords": [
+    "deprecated",
+    "legacy-bridge",
+    "extracted-repo"
+  ],
+  "private": true,
+  "browserInstallable": false,
+  "bundledBy": "tools/extensions/build-installable-extensions.mjs"
+}

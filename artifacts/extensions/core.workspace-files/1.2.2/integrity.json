@@ -1,0 +1,55 @@
+{
+  "generatedAt": "2026-11-24T04:03:46.869Z",
+  "artifact": {
+    "id": "core.workspace-files",
+    "packageName": "@mdwrk/extension-workspace-files",
+    "version": "1.2.2",
+    "kind": "bundled",
+    "artifactPath": "artifacts/extensions/core.workspace-files/1.2.2",
+    "entryModulePath": "dist/index.js",
+    "supportedLocales": [
+      "en"
+    ],
+    "generatedAt": "2026-11-24T04:03:46.482Z"
+  },
+  "files": [
+    {
+      "path": "installable.json",
+      "sha256": "b1ab91a14d17b209fa43e68c7db70c0a0a430a3b73baf6a82ad2706b2dec30a6"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6"
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "76a32bf0ff7a6456f8c015df1699d5f96f45346e4a0e03b813a0e400f4d3cd5b"
+    },
+    {
+      "path": "package.json",
+      "sha256": "cb6b731b120e8659aac843efc43be82997b0b379cc530afa5e3baa49501feb9d"
+    },
+    {
+      "path": "portable-package.json",
+      "sha256": "5d18906f02e26b2a6507a6b9eb110cc2b833315574b72e3c37c49c154c618ac9"
+    },
+    {
+      "path": "README.md",
+      "sha256": "098b1fd453d3267b76af44abb07dd40bfba5345c64abf7ae3f5e9f322d0cb786"
+    },
+    {
+      "path": "signed-manifest.json",
+      "sha256": "208b13a94e06640d0453299ec68a6f466ecde0e648f84a4d664539215ea3f26e"
+    }
+  ],
+  "provenance": {
+    "gitSha": null,
+    "gitRef": null,
+    "workflow": null
+  },
+  "signer": {
+    "keyId": "dev-ecdsa-p256-sha256",
+    "label": "Development sample signer",
+    "publisher": "demo-catalog"
+  }
+}
