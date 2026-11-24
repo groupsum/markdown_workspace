@@ -1,0 +1,55 @@
+{
+  "generatedAt": "2026-11-24T04:03:46.792Z",
+  "artifact": {
+    "id": "external.catalog-hello",
+    "packageName": "@mdwrk/extension-catalog-hello",
+    "version": "1.2.2",
+    "kind": "external",
+    "artifactPath": "artifacts/extensions/external.catalog-hello/1.2.2",
+    "entryModulePath": "dist/index.js",
+    "supportedLocales": [
+      "en"
+    ],
+    "generatedAt": "2026-11-24T04:03:43.524Z"
+  },
+  "files": [
+    {
+      "path": "installable.json",
+      "sha256": "9d3c2d7b4309c48fede0d59e50583e0ab76398a623ae5ca9005592a265b02f1a"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6"
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "7a692d6b9240cdc6609caf782af22055b562a873b05c5c637c23bbd03047ffe8"
+    },
+    {
+      "path": "package.json",
+      "sha256": "d007b4b35b23a3b8623afe6a3130b7668343993e005da4d04d0ef0187e7b0516"
+    },
+    {
+      "path": "portable-package.json",
+      "sha256": "da399f2f1752a32c08dfb59c806b705a8fcfb9b2e5f12b1594b4af70e8fe388e"
+    },
+    {
+      "path": "README.md",
+      "sha256": "d31614e0b056b2c955603ad9ae3b109b263f5bfa2b950ec994945334ce92caba"
+    },
+    {
+      "path": "signed-manifest.json",
+      "sha256": "0f2900e5d99fb6363fa2ae2240432c16b439c370330174fa8f663ddb1277b280"
+    }
+  ],
+  "provenance": {
+    "gitSha": null,
+    "gitRef": null,
+    "workflow": null
+  },
+  "signer": {
+    "keyId": "dev-ecdsa-p256-sha256",
+    "label": "Development sample signer",
+    "publisher": "demo-catalog"
+  }
+}
