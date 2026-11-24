@@ -88,7 +88,7 @@
         "releaseType": "release"
       }
     ],
-    "electronVersion": "37.2.6"
+    "electronVersion": "43.8.12"
   },
   "dependencies": {
     "@capacitor/android": "^7.4.3",
@@ -97,8 +97,9 @@
   },
   "devDependencies": {
     "@types/node": "^24.6.1",
-    "electron": "37.2.6",
-    "electron-builder": "26.0.12",
+    "electron": "43.8.12",
+    "electron-builder": "26.18.0",
+    "electron-builder-squirrel-windows": "26.18.0",
     "typescript": "^5.9.3",
     "wait-on": "^8.0.3"
   },

@@ -81,8 +81,9 @@ export async function buildInstallableExtensions() {
       await copyRecursive(path.join(repoRoot, 'LICENSE'), path.join(versionRoot, 'LICENSE'));
     }
 
+    const { devDependencies, ...runtimePackageJson } = workspacePackage.packageJson;
     const artifactPackageJson = {
-      ...workspacePackage.packageJson,
+      ...runtimePackageJson,
       browserInstallable: manifest.kind === 'external',
       bundledBy: 'tools/extensions/build-installable-extensions.mjs',
     };
