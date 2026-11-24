@@ -1,94 +1,94 @@
 {
-  "generatedAt": "2026-05-06T09:37:01.934Z",
+  "generatedAt": "2026-11-24T04:03:46.482Z",
   "generator": "tools/extensions/build-installable-extensions.mjs",
   "ok": true,
   "artifacts": [
     {
       "id": "external.catalog-hello",
       "packageName": "@mdwrk/extension-catalog-hello",
-      "version": "1.1.2",
+      "version": "1.2.2",
       "kind": "external",
-      "artifactPath": "artifacts/extensions/external.catalog-hello/1.1.2",
+      "artifactPath": "artifacts/extensions/external.catalog-hello/1.2.2",
       "entryModulePath": "dist/index.js",
       "supportedLocales": [
         "en"
       ],
-      "generatedAt": "2026-05-06T09:37:01.447Z"
+      "generatedAt": "2026-11-24T04:03:43.524Z"
     },
     {
       "id": "core.gemini-agent",
       "packageName": "@mdwrk/extension-gemini-agent",
-      "version": "1.2.1",
+      "version": "1.2.2",
       "kind": "bundled",
-      "artifactPath": "artifacts/extensions/core.gemini-agent/1.2.1",
+      "artifactPath": "artifacts/extensions/core.gemini-agent/1.2.2",
       "entryModulePath": "dist/createGeminiAgentBundledEntry.js",
       "supportedLocales": [
         "en",
         "es"
       ],
-      "generatedAt": "2026-05-06T09:37:01.589Z"
+      "generatedAt": "2026-11-24T04:03:44.503Z"
     },
     {
       "id": "core.git-ops",
       "packageName": "@mdwrk/extension-git-ops",
-      "version": "1.0.1",
+      "version": "1.2.2",
       "kind": "bundled",
-      "artifactPath": "artifacts/extensions/core.git-ops/1.0.1",
+      "artifactPath": "artifacts/extensions/core.git-ops/1.2.2",
       "entryModulePath": "dist/index.js",
       "supportedLocales": [
         "en"
       ],
-      "generatedAt": "2026-05-06T09:37:01.633Z"
+      "generatedAt": "2026-11-24T04:03:44.726Z"
     },
     {
       "id": "core.language-pack-studio",
       "packageName": "@mdwrk/extension-language-pack-studio",
-      "version": "1.0.5",
+      "version": "1.0.6",
       "kind": "bundled",
-      "artifactPath": "artifacts/extensions/core.language-pack-studio/1.0.5",
+      "artifactPath": "artifacts/extensions/core.language-pack-studio/1.0.6",
       "entryModulePath": "dist/index.js",
       "supportedLocales": [
         "en"
       ],
-      "generatedAt": "2026-05-06T09:37:01.702Z"
+      "generatedAt": "2026-11-24T04:03:45.104Z"
     },
     {
       "id": "core.extension-manager",
       "packageName": "@mdwrk/extension-manager",
-      "version": "1.1.8",
+      "version": "1.2.2",
       "kind": "bundled",
-      "artifactPath": "artifacts/extensions/core.extension-manager/1.1.8",
+      "artifactPath": "artifacts/extensions/core.extension-manager/1.2.2",
       "entryModulePath": "dist/index.js",
       "supportedLocales": [
         "en",
         "es"
       ],
-      "generatedAt": "2026-05-06T09:37:01.792Z"
+      "generatedAt": "2026-11-24T04:03:45.669Z"
     },
     {
       "id": "core.theme-studio",
       "packageName": "@mdwrk/extension-theme-studio",
-      "version": "1.1.6",
+      "version": "1.2.2",
       "kind": "bundled",
-      "artifactPath": "artifacts/extensions/core.theme-studio/1.1.6",
+      "artifactPath": "artifacts/extensions/core.theme-studio/1.2.2",
       "entryModulePath": "dist/index.js",
       "supportedLocales": [
         "en",
         "es"
       ],
-      "generatedAt": "2026-05-06T09:37:01.887Z"
+      "generatedAt": "2026-11-24T04:03:46.254Z"
     },
     {
       "id": "core.workspace-files",
       "packageName": "@mdwrk/extension-workspace-files",
-      "version": "1.0.1",
+      "version": "1.2.2",
       "kind": "bundled",
-      "artifactPath": "artifacts/extensions/core.workspace-files/1.0.1",
+      "artifactPath": "artifacts/extensions/core.workspace-files/1.2.2",
       "entryModulePath": "dist/index.js",
       "supportedLocales": [
         "en"
       ],
-      "generatedAt": "2026-05-06T09:37:01.934Z"
+      "generatedAt": "2026-11-24T04:03:46.482Z"
     }
   ],
   "failures": []
